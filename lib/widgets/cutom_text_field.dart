@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/widgets/app_colors.dart';
+import 'package:raqeeb/presentation/app_colors.dart';
+import 'package:raqeeb/presentation/app_styles.dart';
+
 
 class CustomTextField extends StatefulWidget {
   final String label;
@@ -43,10 +45,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           padding: const EdgeInsets.only(left: 4, bottom: 8),
           child: Text(
             widget.label,
-            style: const TextStyle(
+            style: AppStyles.jakartaSemiBoldCharcoal20.copyWith(
               fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textDark,
+              letterSpacing: 0,
             ),
           ),
         ),
@@ -55,31 +56,37 @@ class _CustomTextFieldState extends State<CustomTextField> {
           obscureText: _obscure,
           keyboardType: widget.keyboardType,
           validator: widget.validator,
-          style: const TextStyle(fontSize: 14, color: AppColors.textDark),
+          style: AppStyles.jakartaRegularCharcoal16.copyWith(fontSize: 14),
           decoration: InputDecoration(
             hintText: widget.hintText,
-            hintStyle: const TextStyle(fontSize: 14, color: AppColors.hint),
+            hintStyle: AppStyles.jakartaRegularMuted16.copyWith(fontSize: 14),
+            errorStyle: AppStyles.jakartaMediumCharcoal12.copyWith(
+              color: AppColors.criticalRed,
+            ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: AppColors.surface,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-            prefixIcon: Icon(widget.prefixIcon,
-                size: 22, color: AppColors.textMuted),
+            prefixIcon: Icon(
+              widget.prefixIcon,
+              size: 22,
+              color: AppColors.mutedText,
+            ),
             suffixIcon: widget.isPassword
                 ? IconButton(
                     icon: Icon(
                       _obscure
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
-                      color: AppColors.textMuted,
+                      color: AppColors.mutedText,
                     ),
                     onPressed: () => setState(() => _obscure = !_obscure),
                   )
                 : null,
-            enabledBorder: _border(AppColors.border),
-            focusedBorder: _border(AppColors.primary, 1.5),
-            errorBorder: _border(Colors.redAccent),
-            focusedErrorBorder: _border(Colors.redAccent, 1.5),
+            enabledBorder: _border(AppColors.fieldBorder),
+            focusedBorder: _border(AppColors.primaryPink, 1.5),
+            errorBorder: _border(AppColors.criticalRed),
+            focusedErrorBorder: _border(AppColors.criticalRed, 1.5),
           ),
         ),
       ],

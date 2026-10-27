@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:raqeeb/presentation/app_colors.dart';
+import 'package:raqeeb/presentation/app_styles.dart';
 import 'package:raqeeb/widgets/blob.dart';
 import 'package:raqeeb/widgets/custom_button.dart';
 import 'package:raqeeb/widgets/cutom_text_field.dart';
 import 'package:raqeeb/widgets/logo.dart';
 import 'package:raqeeb/widgets/role_card.dart';
-import '../widgets/app_colors.dart';
+import 'package:raqeeb/screens/home_screen.dart';
 
 enum UserRole { patient, caregiver }
 
@@ -36,7 +38,12 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _loading = true);
     // TODO: call your auth API here
     await Future.delayed(const Duration(seconds: 1));
-    if (mounted) setState(() => _loading = false);
+    if (!mounted) return;
+    setState(() => _loading = false);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
+    );
   }
 
   @override
@@ -47,15 +54,15 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColors.background,
       body: Stack(
         children: [
-          Positioned(
+          const Positioned(
             top: -60,
             left: -60,
-            child: Blob(coloring: Color(0xFFF8C9DC), size: 220)
+            child: Blob(coloring: AppColors.softLavender, size: 220),
           ),
-          Positioned(
+          const Positioned(
             top: 20,
             right: -80,
-            child: Blob(coloring: Color(0xFFFFD6E2) , size: 240),
+            child: Blob(coloring: AppColors.powderPink, size: 240),
           ),
           SafeArea(
             child: Center(
@@ -66,39 +73,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(child: Logo()),
+                      const Center(child: Logo()),
                       const SizedBox(height: 20),
-                      const Center(
+                      Center(
                         child: Text(
                           'Welcome to RAQEEB',
-                          style: TextStyle(
+                          style: AppStyles.jakartaBoldCharcoal32.copyWith(
                             fontSize: 26,
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.textDark,
+                            letterSpacing: -0.5,
                           ),
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Center(
+                      Center(
                         child: Text(
                           'Your care, always connected.',
-                          style: TextStyle(
+                          style: AppStyles.jakartaRegularMuted16.copyWith(
                             fontSize: 14,
-                            color: AppColors.textMuted,
                           ),
                         ),
                       ),
                       const SizedBox(height: 28),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 4, bottom: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4, bottom: 10),
                         child: Text(
                           'CONTINUE AS',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.8,
-                            color: AppColors.textMuted,
-                          ),
+                          style: AppStyles.jakartaMediumMuted12,
                         ),
                       ),
                       Row(
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 22,
                             child: Checkbox(
                               value: _rememberMe,
-                              activeColor: AppColors.primary,
+                              activeColor: AppColors.primaryPink,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
                               ),
@@ -164,11 +164,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          const Text(
+                          Text(
                             'Remember me',
-                            style: TextStyle(
+                            style: AppStyles.jakartaMediumMuted12.copyWith(
                               fontSize: 13,
-                              color: AppColors.textMuted,
+                              letterSpacing: 0,
                             ),
                           ),
                           const Spacer(),
@@ -176,12 +176,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             onTap: () {
                               // TODO: navigate to forgot password
                             },
-                            child: const Text(
+                            child: Text(
                               'Forgot Password?',
-                              style: TextStyle(
+                              style:
+                                  AppStyles.jakartaMediumPrimaryPink12.copyWith(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
-                                color: AppColors.primary,
                               ),
                             ),
                           ),
@@ -205,7 +205,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
- 
- 
 }

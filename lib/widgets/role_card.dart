@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/widgets/app_colors.dart';
+import 'package:raqeeb/presentation/app_colors.dart';
+import 'package:raqeeb/presentation/app_styles.dart';
 
 /// Selectable card used for "Patient" / "Caregiver".
 class RoleCard extends StatelessWidget {
@@ -24,10 +25,12 @@ class RoleCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         height: 88,
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primaryLight : Colors.white,
+          color: isSelected
+              ? AppColors.powderPink.withValues(alpha: 0.45)
+              : AppColors.surface,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.cardBorder,
+            color: isSelected ? AppColors.primaryPink : AppColors.fieldBorder,
             width: isSelected ? 2 : 1,
           ),
         ),
@@ -43,28 +46,23 @@ class RoleCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: isSelected
-                          ? const Color(0xFFFFD3E0)
-                          : const Color(0xFFF1E8EB),
+                          ? AppColors.powderPink
+                          : AppColors.softLavender.withValues(alpha: 0.5),
                     ),
                     child: Icon(
                       icon,
                       size: 20,
                       color: isSelected
-                          ? AppColors.primary
-                          : AppColors.textMuted,
+                          ? AppColors.primaryPink
+                          : AppColors.mutedText,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     title,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight:
-                          isSelected ? FontWeight.w700 : FontWeight.w500,
-                      color: isSelected
-                          ? AppColors.textDark
-                          : AppColors.textMuted,
-                    ),
+                    style: isSelected
+                        ? AppStyles.jakartaBoldCharcoal14
+                        : AppStyles.jakartaBoldDisabled14,
                   ),
                 ],
               ),
@@ -77,10 +75,14 @@ class RoleCard extends StatelessWidget {
                   width: 18,
                   height: 18,
                   decoration: const BoxDecoration(
-                    color: AppColors.primary,
+                    color: AppColors.primaryPink,
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.check, size: 12, color: Colors.white),
+                  child: const Icon(
+                    Icons.check,
+                    size: 12,
+                    color: AppColors.surface,
+                  ),
                 ),
               ),
           ],

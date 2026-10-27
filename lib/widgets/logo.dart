@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:raqeeb/presentation/app_colors.dart';
+import 'package:raqeeb/presentation/app_styles.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       width: 44,
       height: 44,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
+            color: AppColors.deepInk.withValues(alpha: 0.08),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -23,23 +25,17 @@ class Logo extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          gradient: const LinearGradient(
-            colors: [Color(0xFFD81B60), Color(0xFF9C0F4A)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          gradient: AppColors.primaryGradient,
         ),
         alignment: Alignment.center,
-        child: const Text(
+        child: Text(
           'R',
-          style: TextStyle(
-            color: Colors.white,
+          style: AppStyles.jakartaBoldSurface14.copyWith(
             fontSize: 20,
-            fontWeight: FontWeight.w800,
+            letterSpacing: 0,
           ),
         ),
       ),
     );
   }
-
-  }
+}

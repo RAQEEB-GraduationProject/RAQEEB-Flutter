@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/widgets/app_colors.dart';
+import 'package:raqeeb/presentation/app_colors.dart';
+import 'package:raqeeb/presentation/app_styles.dart';
+
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -24,7 +26,7 @@ class PrimaryButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.35),
+            color: AppColors.primaryPink.withValues(alpha: 0.35),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -33,8 +35,9 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          backgroundColor: AppColors.primaryPink,
+          foregroundColor: AppColors.surface,
+          disabledBackgroundColor: AppColors.primaryPink,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
@@ -46,20 +49,13 @@ class PrimaryButton extends StatelessWidget {
                 height: 22,
                 child: CircularProgressIndicator(
                   strokeWidth: 2.5,
-                  color: Colors.white,
+                  color: AppColors.surface,
                 ),
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    text,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 1,
-                    ),
-                  ),
+                  Text(text, style: AppStyles.jakartaBoldSurface14),
                   if (trailingIcon != null) ...[
                     const SizedBox(width: 8),
                     Icon(trailingIcon, size: 20),
