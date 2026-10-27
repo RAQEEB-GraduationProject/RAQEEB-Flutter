@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # raqeeb
 
 A new Flutter project.
@@ -15,3 +16,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# RAQEEB-Flutter
+>>>>>>> 6e09dee5e09055743b3e7928ac2574a53a672bba
