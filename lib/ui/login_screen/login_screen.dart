@@ -12,6 +12,8 @@ import '../../core/theme/app_styles.dart';
 enum UserRole { patient, caregiver }
 
 class LoginScreen extends StatefulWidget {
+  static const String route ="/login";
+
   const LoginScreen({super.key});
 
   @override

@@ -9,6 +9,7 @@ abstract final class AppColors {
   static const Color softLavender = Color(0xFFDCCCF7); // SpO2 card - secondary cards
   static const Color charcoal = Color(0xFF333333); // Main text color
   static const Color deepInk = Color(0xFF040404); // Strongest text / dark surfaces
+  static const Color onBackground = Color(0xFF1C1B1B); // Strongest text / dark surfaces
   static const Color surface = Color(0xFFFFFFFF); // Cards - text fields - etc..
 
   // Risk Status Colors
@@ -27,7 +28,7 @@ abstract final class AppColors {
   static const Color disabledGrey = Color(0xFFD1D1D1); // Disabled button bg
   static const Color mutedText = Color(0xFF8A6A74); // Hints - sub texts
   static const Color fieldBorder = Color(0xFFE6BFCB); // Text field border
-  static const Color background = Color(0xFFFDF8F7); // Screen background
+  static const Color background = Color(0xFFFCF8F8); // Screen background
 
   // Gradients
   static const LinearGradient primaryGradient = LinearGradient(
