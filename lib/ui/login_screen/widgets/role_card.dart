@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../core/theme/app_colors.dart';
-import '../core/theme/app_styles.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_styles.dart';
+
 
 /// Selectable card used for "Patient" / "Caregiver".
 class RoleCard extends StatelessWidget {

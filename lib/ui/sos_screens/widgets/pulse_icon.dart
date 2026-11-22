@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/presentation/app_colors.dart';
+import '../../../core/theme/app_colors.dart';
+
 
 /// Round icon surrounded by two soft rings (used for the SOS alert / success).
 class PulseIcon extends StatelessWidget {

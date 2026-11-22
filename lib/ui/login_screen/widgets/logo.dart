@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../core/theme/app_colors.dart';
-import '../core/theme/app_styles.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_styles.dart';
+
 
 class Logo extends StatelessWidget {
   const Logo({super.key});

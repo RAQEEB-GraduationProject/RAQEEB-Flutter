@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/presentation/app_colors.dart';
-import 'package:raqeeb/presentation/app_styles.dart';
-import 'package:raqeeb/screens/sos_sent_screen.dart';
-import 'package:raqeeb/widgets/numbered_step.dart';
-import 'package:raqeeb/widgets/pulse_icon.dart';
-import 'package:raqeeb/widgets/sos_app_bar.dart';
-import 'package:raqeeb/widgets/sos_button.dart';
-import 'package:raqeeb/widgets/sos_card.dart';
+import 'package:raqeeb/ui/sos_screens/sos_sent_screen.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/numbered_step.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/pulse_icon.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_app_bar.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_button.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_card.dart';
+
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_styles.dart';
 
 class SosConfirmationScreen extends StatelessWidget {
   /// When true, shows the "No internet - an SMS will be sent" banner.
@@ -37,7 +38,7 @@ class SosConfirmationScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
                 child: Column(
                   children: [
-                    const PulseIcon(
+                     PulseIcon(
                       icon: Icons.priority_high_rounded,
                       color: AppColors.criticalRed,
                       ringColor: AppColors.criticalRedBg,

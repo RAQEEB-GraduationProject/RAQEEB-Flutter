@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/presentation/app_colors.dart';
-import 'package:raqeeb/presentation/app_styles.dart';
-import 'package:raqeeb/widgets/pulse_icon.dart';
-import 'package:raqeeb/widgets/sos_app_bar.dart';
-import 'package:raqeeb/widgets/sos_button.dart';
-import 'package:raqeeb/widgets/sos_card.dart';
-import 'package:raqeeb/widgets/status_tile.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/pulse_icon.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_app_bar.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_button.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_card.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/status_tile.dart';
+
+
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_styles.dart';
 
 class SosSentScreen extends StatelessWidget {
   final String sentAt;
