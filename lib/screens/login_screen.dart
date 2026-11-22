@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/presentation/app_colors.dart';
-import 'package:raqeeb/presentation/app_styles.dart';
 import 'package:raqeeb/widgets/blob.dart';
 import 'package:raqeeb/widgets/custom_button.dart';
 import 'package:raqeeb/widgets/cutom_text_field.dart';
 import 'package:raqeeb/widgets/logo.dart';
 import 'package:raqeeb/widgets/role_card.dart';
 import 'package:raqeeb/screens/home_screen.dart';
+
+import '../core/theme/app_colors.dart';
+import '../core/theme/app_styles.dart';
 
 enum UserRole { patient, caregiver }
 
