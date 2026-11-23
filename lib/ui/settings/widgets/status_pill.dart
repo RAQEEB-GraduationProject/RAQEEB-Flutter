@@ -24,7 +24,7 @@ class StatusPill extends StatelessWidget {
             width: 20,
             height: 20,
             decoration: BoxDecoration(
-              color: AppColors.primaryPink.withOpacity(0.15),
+              color: AppColors.primaryPink.withValues(alpha: 0.15),
               shape: BoxShape.circle,
             ),
             child: const Icon(Icons.favorite_rounded, size: 12, color: AppColors.primaryPink),

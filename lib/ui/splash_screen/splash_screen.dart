@@ -3,6 +3,8 @@ import '../../core/theme/app_colors.dart';
 import '../login_screen/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const String route = '/splash';
+
   const SplashScreen({super.key});
 
   // Put your two images at these paths (and keep the file names).
@@ -39,15 +41,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void _goToLogin() {
     if (!mounted) return;
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 500),
-        pageBuilder: (_, _, _) => const LoginScreen(),
-        transitionsBuilder: (_, animation, _, child) =>
-            FadeTransition(opacity: animation, child: child),
-      ),
-    );
+    Navigator.pushReplacementNamed(context, LoginScreen.route);
   }
 
   @override

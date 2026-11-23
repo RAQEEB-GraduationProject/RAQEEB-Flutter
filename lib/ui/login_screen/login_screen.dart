@@ -9,7 +9,7 @@ import 'package:raqeeb/ui/login_screen/widgets/role_card.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 
-import 'package:raqeeb/l10n/app_localizations.dart';
+
 
 
 enum UserRole { patient, caregiver }
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _loading = false);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      MaterialPageRoute(builder: (_) => HomeScreen(onOpenProfileTab: () {})),
     );
   }
 

@@ -17,6 +17,8 @@ class NotificationsResult {
 }
 
 class NotificationsScreen extends StatefulWidget {
+  static const String route = '/notifications';
+
   // The current list (owned by Home). The updated list is returned on pop.
   final List<AppNotification> initialNotifications;
 

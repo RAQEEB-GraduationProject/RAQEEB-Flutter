@@ -11,6 +11,8 @@ import 'widgets/symptom_category_chips.dart';
 import 'widgets/symptom_search_field.dart';
 
 class CheckinSymptomsScreen extends StatefulWidget {
+  static const String route = '/checkin_symptoms';
+
   // The mood picked on the Home screen, carried through the check-in flow.
   final Mood? mood; // null if the patient didn't pick one
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:testingg/ui/sos_screens/sos_sent_screen.dart';
-import 'package:testingg/ui/sos_screens/widgets/numbered_step.dart';
-import 'package:testingg/ui/sos_screens/widgets/pulse_icon.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_app_bar.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_button.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_card.dart';
+import 'package:raqeeb/ui/sos_screens/sos_sent_screen.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/numbered_step.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/pulse_icon.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_app_bar.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_button.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_card.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 
@@ -19,10 +19,7 @@ class SosConfirmationScreen extends StatelessWidget {
 
   void _sendSos(BuildContext context) {
     // TODO: send the SOS (API call, or SMS when offline)
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const SosSentScreen()),
-    );
+    Navigator.pushReplacementNamed(context, SosSentScreen.route);
   }
 
   @override

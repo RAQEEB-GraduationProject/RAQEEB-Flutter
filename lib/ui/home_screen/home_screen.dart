@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:testingg/data/models/app_notification.dart';
-import 'package:testingg/ui/checkin_screen/checkin_symptoms_screen.dart';
-import 'package:testingg/ui/notifications_screen/notifications_screen.dart';
-import 'package:testingg/ui/home_screen/widgets/care_journey_card.dart';
-import 'package:testingg/ui/home_screen/widgets/care_team_section.dart';
-import 'package:testingg/ui/home_screen/widgets/daily_word_card.dart';
-import 'package:testingg/ui/home_screen/widgets/evening_checkin_card.dart';
-import 'package:testingg/ui/home_screen/widgets/home_header.dart';
-import 'package:testingg/ui/home_screen/widgets/medication_card.dart';
-import 'package:testingg/ui/sos_screens/sos_confirmation_screen.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_button.dart';
+import 'package:raqeeb/data/models/app_notification.dart';
+import 'package:raqeeb/ui/checkin_screen/checkin_symptoms_screen.dart';
+import 'package:raqeeb/ui/notifications_screen/notifications_screen.dart';
+import 'package:raqeeb/ui/home_screen/widgets/care_journey_card.dart';
+import 'package:raqeeb/ui/home_screen/widgets/care_team_section.dart';
+import 'package:raqeeb/ui/home_screen/widgets/daily_word_card.dart';
+import 'package:raqeeb/ui/home_screen/widgets/evening_checkin_card.dart';
+import 'package:raqeeb/ui/home_screen/widgets/home_header.dart';
+import 'package:raqeeb/ui/home_screen/widgets/medication_card.dart';
+import 'package:raqeeb/ui/sos_screens/sos_confirmation_screen.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_button.dart';
 import '../../core/theme/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   // Asks the shell to switch to the Profile tab.
   final VoidCallback onOpenProfileTab;
+
+  static const String route = '/home';
 
   const HomeScreen({super.key, required this.onOpenProfileTab});
 
@@ -96,9 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Opens the check-in flow with the mood picked on the emoji row.
   Future<void> _startCheckin() async {
-    final done = await Navigator.push<bool>(
+    final done = await Navigator.pushNamed<bool>(
       context,
-      MaterialPageRoute(builder: (_) => CheckinSymptomsScreen(mood: _mood)),
+      CheckinSymptomsScreen.route,
+      arguments: _mood,
     );
     // The flow pops with `true` once the whole check-in is submitted.
     if (done == true && mounted) setState(() => _checkinDone = true);
@@ -107,12 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
   // The notifications screen returns the updated list (read / removed),
   // and whether the patient tapped its profile avatar.
   Future<void> _openNotifications() async {
-    final result = await Navigator.push<NotificationsResult>(
+    final result = await Navigator.pushNamed<NotificationsResult>(
       context,
-      MaterialPageRoute(
-        builder: (_) =>
-            NotificationsScreen(initialNotifications: _notifications),
-      ),
+      NotificationsScreen.route,
+      arguments: _notifications,
     );
     if (result == null || !mounted) return;
     setState(() => _notifications = result.notifications);
@@ -120,10 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openSos() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const SosConfirmationScreen()),
-    );
+    Navigator.pushNamed(context, SosConfirmationScreen.route);
   }
 
   @override

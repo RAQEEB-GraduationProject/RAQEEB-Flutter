@@ -28,7 +28,7 @@ class PreferencesCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -119,8 +119,8 @@ class PreferencesCard extends StatelessWidget {
                 Switch(
                   value: alertsEnabled,
                   onChanged: onAlertsChanged,
-                  activeColor: AppColors.primaryPink,
-                  activeTrackColor: AppColors.primaryPink.withOpacity(0.35),
+                  activeThumbColor: AppColors.primaryPink,
+                  activeTrackColor: AppColors.primaryPink.withValues(alpha: 0.35),
                   inactiveThumbColor: Colors.white,
                   inactiveTrackColor: AppColors.disabledGrey,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -160,8 +160,8 @@ class PreferencesCard extends StatelessWidget {
                 Switch(
                   value: highContrastEnabled,
                   onChanged: onHighContrastChanged,
-                  activeColor: AppColors.primaryPink,
-                  activeTrackColor: AppColors.primaryPink.withOpacity(0.35),
+                  activeThumbColor: AppColors.primaryPink,
+                  activeTrackColor: AppColors.primaryPink.withValues(alpha: 0.35),
                   inactiveThumbColor: Colors.white,
                   inactiveTrackColor: AppColors.disabledGrey,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

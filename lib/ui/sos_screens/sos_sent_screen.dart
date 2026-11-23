@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:testingg/ui/sos_screens/widgets/pulse_icon.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_app_bar.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_button.dart';
-import 'package:testingg/ui/sos_screens/widgets/sos_card.dart';
-import 'package:testingg/ui/sos_screens/widgets/status_tile.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/pulse_icon.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_app_bar.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_button.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/sos_card.dart';
+import 'package:raqeeb/ui/sos_screens/widgets/status_tile.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 

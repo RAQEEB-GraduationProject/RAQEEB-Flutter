@@ -216,7 +216,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.primaryPink.withOpacity(0.04)
+              ? AppColors.primaryPink.withValues(alpha: 0.04)
               : Colors.white,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: borderColor, width: isSelected ? 1.5 : 1),
