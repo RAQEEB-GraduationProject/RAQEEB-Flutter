@@ -46,9 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
     await Future.delayed(const Duration(seconds: 1));
     if (!mounted) return;
     setState(() => _loading = false);
-    Navigator.pushReplacementNamed(
+    Navigator.pushReplacement(
       context,
-      HomeScreen.route
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
   }
 
@@ -195,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 26),
                       PrimaryButton(
-                        text: AppLocalizations.of(context)!.login,
+                        text: 'LOGIN',
                         trailingIcon: Icons.arrow_forward,
                         isLoading: _loading,
                         onPressed: _login,
