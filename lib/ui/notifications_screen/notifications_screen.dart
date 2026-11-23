@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 import '../../data/models/app_notification.dart';
+import '../../l10n/app_localizations.dart';
 import 'widgets/alert_guarantee_card.dart';
 import 'widgets/notification_card.dart';
 import 'widgets/notification_filter_chips.dart';
@@ -74,6 +75,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final visible = _visible;
 
     return PopScope(
@@ -89,6 +91,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           child: Column(
             children: [
               _TopBar(
+                title: l.notificationsTitle,
                 unreadCount: _unreadCount,
                 onBack: () => Navigator.maybePop(context),
                 onFilter: () {
@@ -105,7 +108,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       child: TextButton(
                         onPressed: _unreadCount == 0 ? null : _markAllRead,
                         child: Text(
-                          'Mark all read',
+                          l.notificationsMarkAllRead,
                           style: AppStyles.jakartaMediumMuted12.copyWith(
                             letterSpacing: 0,
                             color: _unreadCount == 0
@@ -126,7 +129,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 40),
                         child: Center(
                           child: Text(
-                            'No notifications',
+                            l.notificationsEmpty,
                             style: AppStyles.jakartaRegularMuted16,
                           ),
                         ),
@@ -165,12 +168,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 }
 
 class _TopBar extends StatelessWidget {
+  final String title;
   final int unreadCount;
   final VoidCallback onBack;
   final VoidCallback onFilter;
   final VoidCallback onProfile;
 
   const _TopBar({
+    required this.title,
     required this.unreadCount,
     required this.onBack,
     required this.onFilter,
@@ -198,7 +203,7 @@ class _TopBar extends StatelessWidget {
             onPressed: onBack,
           ),
           Text(
-            'Notifications',
+            title,
             style: AppStyles.jakartaSemiBoldCharcoal20.copyWith(
               fontSize: 17,
               letterSpacing: -0.2,

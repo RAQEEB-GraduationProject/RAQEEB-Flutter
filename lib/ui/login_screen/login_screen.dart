@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/ui/home_screen/home_screen.dart';
+import 'package:raqeeb/l10n/app_localizations.dart';
 import 'package:raqeeb/ui/login_screen/widgets/blob.dart';
 import 'package:raqeeb/ui/login_screen/widgets/custom_button.dart';
 import 'package:raqeeb/ui/login_screen/widgets/cutom_text_field.dart';
@@ -52,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final isPatient = _role == UserRole.patient;
 
     return Scaffold(
@@ -81,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 20),
                       Center(
                         child: Text(
-                          'Welcome to RAQEEB',
+                          l.loginWelcomeTitle,
                           style: AppStyles.jakartaBoldCharcoal32.copyWith(
                             fontSize: 26,
                             letterSpacing: -0.5,
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 4),
                       Center(
                         child: Text(
-                          'Your care, always connected.',
+                          l.loginWelcomeSubtitle,
                           style: AppStyles.jakartaRegularMuted16.copyWith(
                             fontSize: 14,
                           ),
@@ -101,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left: 4, bottom: 10),
                         child: Text(
-                          'CONTINUE AS',
+                          l.loginContinueAs,
                           style: AppStyles.jakartaMediumMuted12,
                         ),
                       ),
@@ -109,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Expanded(
                             child: RoleCard(
-                              title: 'Patient',
+                              title: l.rolePatient,
                               icon: Icons.favorite,
                               isSelected: isPatient,
                               onTap: () =>
@@ -119,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(width: 12),
                           Expanded(
                             child: RoleCard(
-                              title: 'Caregiver',
+                              title: l.roleCaregiver,
                               icon: Icons.volunteer_activism,
                               isSelected: !isPatient,
                               onTap: () =>
@@ -130,25 +131,25 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 24),
                       CustomTextField(
-                        label: isPatient ? 'Patient ID' : 'Caregiver ID',
+                        label: isPatient ? l.loginPatientIdLabel : l.loginCaregiverIdLabel,
                         hintText: isPatient
-                            ? 'Enter your Patient ID'
-                            : 'Enter your Caregiver ID',
+                            ? l.loginPatientIdHint
+                            : l.loginCaregiverIdHint,
                         prefixIcon: Icons.badge_outlined,
                         controller: _idController,
                         validator: (v) => (v == null || v.trim().isEmpty)
-                            ? 'ID is required'
+                            ? l.loginIdRequired
                             : null,
                       ),
                       const SizedBox(height: 18),
                       CustomTextField(
-                        label: 'Password',
-                        hintText: 'Enter your password',
+                        label: l.loginPasswordLabel,
+                        hintText: l.loginPasswordHint,
                         prefixIcon: Icons.lock_outline,
                         isPassword: true,
                         controller: _passwordController,
                         validator: (v) => (v == null || v.length < 6)
-                            ? 'Password must be at least 6 characters'
+                            ? l.loginPasswordMinLength
                             : null,
                       ),
                       const SizedBox(height: 14),
@@ -169,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            'Remember me',
+                            l.loginRememberMe,
                             style: AppStyles.jakartaMediumMuted12.copyWith(
                               fontSize: 13,
                               letterSpacing: 0,
@@ -181,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               // TODO: navigate to forgot password
                             },
                             child: Text(
-                              'Forgot Password?',
+                              l.loginForgotPassword,
                               style:
                                   AppStyles.jakartaMediumPrimaryPink12.copyWith(
                                 fontSize: 13,
@@ -193,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 26),
                       PrimaryButton(
-                        text: 'LOGIN',
+                        text: l.loginButton,
                         trailingIcon: Icons.arrow_forward,
                         isLoading: _loading,
                         onPressed: _login,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raqeeb/l10n/app_localizations.dart';
 import 'package:raqeeb/ui/sos_screens/sos_sent_screen.dart';
 import 'package:raqeeb/ui/sos_screens/widgets/numbered_step.dart';
 import 'package:raqeeb/ui/sos_screens/widgets/pulse_icon.dart';
@@ -24,9 +25,11 @@ class SosConfirmationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const SosAppBar(title: 'Sos Confirmation'),
+      appBar: SosAppBar(title: l.sosConfirmationTitle),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
@@ -43,7 +46,7 @@ class SosConfirmationScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'Emergency SOS Confirmation',
+                      l.sosConfirmationHeader,
                       textAlign: TextAlign.center,
                       style: AppStyles.jakartaSemiBoldCharcoal20.copyWith(
                         fontWeight: FontWeight.w700,
@@ -52,7 +55,7 @@ class SosConfirmationScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'Do you need urgent clinical emergency\nassistance right now?',
+                      l.sosConfirmationQuestion,
                       textAlign: TextAlign.center,
                       style: AppStyles.jakartaRegularMuted16.copyWith(
                         fontSize: 13,
@@ -79,7 +82,7 @@ class SosConfirmationScreen extends StatelessWidget {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          'Pressing SEND SOS will instantly:',
+                          l.sosPressingSendWill,
                           style: AppStyles.jakartaBoldCharcoal14.copyWith(
                             fontSize: 13,
                             letterSpacing: 0,
@@ -88,31 +91,30 @@ class SosConfirmationScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 14),
-                    const NumberedStep(
+                    NumberedStep(
                       number: 1,
                       children: [
-                        TextSpan(text: 'Log your SOS with the current time.'),
+                        TextSpan(text: l.sosStep1),
                       ],
                     ),
                     const SizedBox(height: 12),
                     NumberedStep(
                       number: 2,
                       children: [
-                        const TextSpan(text: 'Alert your primary oncologist '),
-                        boldSpan('Dr. Khalid'),
-                        const TextSpan(text: ' and on-call nurse '),
-                        boldSpan('Sarah N.'),
+                        TextSpan(text: l.sosStep2Part1),
+                        boldSpan(l.sosStep2Doctor),
+                        TextSpan(text: l.sosStep2Part2),
+                        boldSpan(l.sosStep2Nurse),
                       ],
                     ),
                     const SizedBox(height: 12),
                     NumberedStep(
                       number: 3,
                       children: [
-                        const TextSpan(
-                          text:
-                              'Send an emergency SMS & push dispatch to registered caregiver ',
+                        TextSpan(
+                          text: l.sosStep3Part1,
                         ),
-                        boldSpan('Fatima Al-Otaibi.'),
+                        boldSpan(l.sosStep3Caregiver),
                       ],
                     ),
                   ],
@@ -120,20 +122,20 @@ class SosConfirmationScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               SosButton(
-                text: 'SEND EMERGENCY SOS NOW',
+                text: l.sosSendEmergencyNow,
                 icon: Icons.emergency_outlined,
                 type: SosButtonType.danger,
                 onPressed: () => _sendSos(context),
               ),
               const SizedBox(height: 12),
               SosButton(
-                text: "Cancel — I'm Safe",
+                text: l.sosCancelImSafe,
                 icon: Icons.verified_user_outlined,
                 onPressed: () => Navigator.maybePop(context),
               ),
               const SizedBox(height: 14),
               SosButton(
-                text: 'Call Hospital',
+                text: l.sosCallHospital,
                 icon: Icons.call_outlined,
                 onPressed: () {
                   // TODO: launch phone dialer (url_launcher)
@@ -150,6 +152,8 @@ class SosConfirmationScreen extends StatelessWidget {
 class _OfflineBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -163,7 +167,7 @@ class _OfflineBanner extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              'No internet - an SMS will be sent to your caregiver',
+              l.sosOfflineBanner,
               textAlign: TextAlign.center,
               style: AppStyles.jakartaMediumCharcoal12.copyWith(fontSize: 11),
             ),

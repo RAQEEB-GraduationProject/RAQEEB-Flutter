@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../sos_screens/widgets/sos_card.dart';
 
 class CareJourneyCard extends StatelessWidget {
@@ -21,6 +22,7 @@ class CareJourneyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final double progress = total == 0 ? 0 : completed / total;
     final int percent = (progress * 100).round();
 
@@ -32,7 +34,7 @@ class CareJourneyCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Today's Care Journey",
+                  l.careJourneyTitle,
                   style: AppStyles.jakartaBoldCharcoal14.copyWith(
                     fontSize: 15,
                     letterSpacing: -0.2,
@@ -40,7 +42,7 @@ class CareJourneyCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '$completed of $total ($percent%)',
+                l.careJourneyProgress(completed, total, percent),
                 style: AppStyles.jakartaBoldCharcoal14.copyWith(
                   fontSize: 13,
                   letterSpacing: 0,
@@ -77,21 +79,21 @@ class CareJourneyCard extends StatelessWidget {
             runSpacing: 8,
             children: [
               _JourneyChip(
-                label: checkinDone ? 'Check-in: Done' : 'Check-in: Pending',
+                label: checkinDone ? l.journeyCheckinDone : l.journeyCheckinPending,
                 icon: checkinDone ? Icons.check_circle : Icons.circle,
                 iconSize: checkinDone ? 12 : 7,
                 color: AppColors.tealAccent,
                 background: AppColors.tealBg,
               ),
               _JourneyChip(
-                label: 'Meds: $medsTaken/$medsTotal Taken',
+                label: l.journeyMedsTaken(medsTaken, medsTotal),
                 icon: Icons.check_rounded,
                 iconSize: 12,
                 color: AppColors.stableGreen,
                 background: AppColors.limeGreen.withValues(alpha: 0.35),
               ),
-              const _JourneyChip(
-                label: 'Hydration: On Track',
+              _JourneyChip(
+                label: l.journeyHydrationOnTrack,
                 icon: Icons.water_drop_outlined,
                 iconSize: 12,
                 color: AppColors.skyBlue,

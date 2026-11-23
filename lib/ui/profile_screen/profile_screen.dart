@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raqeeb/l10n/app_localizations.dart';
 import 'package:raqeeb/ui/settings/settings_screen.dart';
 import 'widgets/clinical_dossier_card.dart';
 import 'widgets/oncology_protocol_card.dart';
@@ -8,27 +9,28 @@ import 'widgets/profile_hero_card.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  // Placeholder data until a patient repository exists.
-  static const List<DossierField> _dossier = [
-    DossierField(label: 'Full Legal Name', value: 'Fatima Al-Otaibi'),
-    DossierField(label: 'Age', value: '58 Years Old'),
-    DossierField(
-      label: 'Medical Record No. (MRN)',
-      value: 'KFSH-904218-ONC',
-      highlight: true,
-    ),
-    DossierField(
-      label: 'Assigned Oncologist',
-      value: 'Dr. Khalid Al-Mansoor (Consultant)',
-    ),
-    DossierField(
-      label: 'Care Coordinator',
-      value: 'SN Sarah N. (Oncology Nurse)',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
+    final dossier = [
+      DossierField(label: l.profileFullLegalName, value: l.settingsPatientName),
+      DossierField(label: l.profileAge, value: l.profileAgeValue),
+      DossierField(
+        label: l.profileMrn,
+        value: l.profileMrnValue,
+        highlight: true,
+      ),
+      DossierField(
+        label: l.profileAssignedOncologist,
+        value: l.profileOncologistValue,
+      ),
+      DossierField(
+        label: l.profileCareCoordinator,
+        value: l.profileCoordinatorValue,
+      ),
+    ];
+
     // Shown as a tab inside MainShell, which provides the Scaffold, safe area
     // and bottom navigation bar.
     return Column(
@@ -42,26 +44,23 @@ class ProfileScreen extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
             child: Column(
-              children: const [
+              children: [
                 ProfileHeroCard(
-                  name: 'Fatima Al-Otaibi',
+                  name: l.settingsPatientName,
                   initials: 'FA',
-                  badgeText:
-                      'Verified Patient ID #RQ-882109 • Active Clinical Enrollment',
+                  badgeText: l.profileBadgeText,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 OncologyProtocolCard(
-                  protocol: 'AC Chemotherapy Protocol',
-                  cycleTimeline: 'Cycle 3 • Day 5 of 21',
-                  monitoringStatus: 'High Monitoring Phase (Nadir Window)',
-                  regimen:
-                      'Doxorubicin + Cyclophosphamide (IV infusion every 21 days)',
+                  protocol: l.profileProtocol,
+                  cycleTimeline: l.profileCycleTimeline,
+                  monitoringStatus: l.profileMonitoringStatus,
+                  regimen: l.profileRegimen,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ClinicalDossierCard(
-                  fields: _dossier,
-                  footerNote:
-                      'Personal and medical information is managed exclusively by your oncology hospital care team. Contact your clinic coordinator for administrative updates.',
+                  fields: dossier,
+                  footerNote: l.profileDossierFooterNote,
                 ),
               ],
             ),

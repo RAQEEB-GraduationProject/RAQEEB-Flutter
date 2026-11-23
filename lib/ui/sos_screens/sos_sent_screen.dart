@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raqeeb/l10n/app_localizations.dart';
 import 'package:raqeeb/ui/sos_screens/widgets/pulse_icon.dart';
 import 'package:raqeeb/ui/sos_screens/widgets/sos_app_bar.dart';
 import 'package:raqeeb/ui/sos_screens/widgets/sos_button.dart';
@@ -16,9 +17,11 @@ class SosSentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: const SosAppBar(title: 'Sos Confirmation'),
+      appBar: SosAppBar(title: l.sosConfirmationTitle),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
@@ -51,7 +54,7 @@ class SosSentScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      'Sent at $sentAt',
+                      l.sosSentAt(sentAt),
                       style: AppStyles.jakartaMediumCharcoal12.copyWith(
                         fontSize: 11,
                       ),
@@ -61,12 +64,12 @@ class SosSentScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'SOS Sent',
+                l.sosSentTitle,
                 style: AppStyles.jakartaBoldCharcoal32.copyWith(fontSize: 28),
               ),
               const SizedBox(height: 6),
               Text(
-                'Your care team has been notified. Stay calm and\nseated while help is routed.',
+                l.sosSentSubtitle,
                 textAlign: TextAlign.center,
                 style: AppStyles.jakartaRegularMuted16.copyWith(fontSize: 13),
               ),
@@ -92,7 +95,7 @@ class SosSentScreen extends StatelessWidget {
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
-                            'Dispatch Priority: Level 1',
+                            l.sosDispatchPriority,
                             style: AppStyles.jakartaBoldCharcoal14.copyWith(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
@@ -110,7 +113,7 @@ class SosSentScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            'ACTIVE',
+                            l.sosDispatchActive,
                             style: AppStyles.jakartaBoldStableGreen12.copyWith(
                               fontSize: 10,
                             ),
@@ -121,8 +124,8 @@ class SosSentScreen extends StatelessWidget {
                     const SizedBox(height: 18),
                     StatusTile(
                       icon: Icons.medical_services_outlined,
-                      title: 'Oncology Rapid Response',
-                      subtitle: 'On-call Nurse Sarah N. dispatched',
+                      title: l.sosRapidResponseTitle,
+                      subtitle: l.sosRapidResponseSubtitle,
                       extra: Row(
                         children: [
                           const Icon(
@@ -132,7 +135,7 @@ class SosSentScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Acknowledged • In Transit (4–6 min)',
+                            l.sosRapidResponseStatus,
                             style: AppStyles.jakartaBoldStableGreen12.copyWith(
                               fontSize: 10,
                               letterSpacing: 0,
@@ -144,10 +147,10 @@ class SosSentScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     StatusTile(
                       icon: Icons.sms_outlined,
-                      title: 'Caregiver Alert Sent',
-                      subtitle: 'Omar Al-Fassi notified with live GPS pin',
+                      title: l.sosCaregiverAlertTitle,
+                      subtitle: l.sosCaregiverAlertSubtitle,
                       extra: Text(
-                        'Delivered via automated priority SMS',
+                        l.sosCaregiverAlertDelivery,
                         style: AppStyles.jakartaBoldCharcoal14.copyWith(
                           fontSize: 10,
                           letterSpacing: 0,
@@ -155,10 +158,10 @@ class SosSentScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const StatusTile(
+                    StatusTile(
                       icon: Icons.location_on_outlined,
-                      title: 'Shared Location',
-                      subtitle: 'Home • Room 204 (Accurate to 3m)',
+                      title: l.sosSharedLocationTitle,
+                      subtitle: l.sosSharedLocationSubtitle,
                     ),
                   ],
                 ),
@@ -179,7 +182,7 @@ class SosSentScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Omar Al-Fassi',
+                            l.sosCaregiverName,
                             style: AppStyles.jakartaBoldCharcoal14.copyWith(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
@@ -187,7 +190,7 @@ class SosSentScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Phone ringing in background',
+                            l.sosCaregiverStatus,
                             style: AppStyles.jakartaMediumMuted12.copyWith(
                               fontSize: 11,
                               letterSpacing: 0,
@@ -200,7 +203,7 @@ class SosSentScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Caregiver',
+                          l.roleCaregiver,
                           style: AppStyles.jakartaBoldStableGreen12.copyWith(
                             fontSize: 10,
                             letterSpacing: 0,
@@ -227,7 +230,7 @@ class SosSentScreen extends StatelessWidget {
               ),
               const SizedBox(height: 18),
               SosButton(
-                text: 'Call Hospital Line Now',
+                text: l.sosCallHospitalLineNow,
                 icon: Icons.call,
                 type: SosButtonType.primary,
                 onPressed: () {
@@ -236,7 +239,7 @@ class SosSentScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               SosButton(
-                text: 'Back to Home',
+                text: l.sosBackToHome,
                 icon: Icons.home_outlined,
                 onPressed: () =>
                     Navigator.popUntil(context, (route) => route.isFirst),

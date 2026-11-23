@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 enum Mood { great, okay, notGreat }
 
@@ -15,6 +16,12 @@ extension MoodX on Mood {
         Mood.great => "I'm Great",
         Mood.okay => "I'm Okay",
         Mood.notGreat => 'Not Great',
+      };
+
+  String labelLocalized(AppLocalizations l) => switch (this) {
+        Mood.great => l.moodGreat,
+        Mood.okay => l.moodOkay,
+        Mood.notGreat => l.moodNotGreat,
       };
 }
 
@@ -36,6 +43,7 @@ class EveningCheckinCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     // If the user hasn't selected a mood, the Start button is disabled.
     final bool canStart = completed || selectedMood != null;
 
@@ -62,7 +70,7 @@ class EveningCheckinCard extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           Text(
-            'How did today feel?',
+            l.eveningCheckinTitle,
             style: AppStyles.jakartaBoldSurface14.copyWith(
               fontSize: 22,
               letterSpacing: -0.4,
@@ -70,7 +78,7 @@ class EveningCheckinCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Tell us how you feel today.',
+            l.eveningCheckinSubtitle,
             style: AppStyles.jakartaRegularMuted16.copyWith(
               fontSize: 13,
               color: AppColors.surface.withValues(alpha: 0.6),
@@ -108,10 +116,11 @@ class _StatusChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final Color bg = completed ? AppColors.limeGreen : AppColors.checkinYellow;
     final Color dot = completed ? AppColors.stableGreen : AppColors.checkinOrange;
     final String text =
-        completed ? 'COMPLETED' : 'NOT COMPLETED • DUE $dueTime';
+        completed ? l.checkinStatusCompleted : l.checkinStatusNotCompleted(dueTime);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -158,6 +167,8 @@ class _MoodButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Material(
       color: AppColors.surface.withValues(alpha: selected ? 0.16 : 0.06),
       borderRadius: BorderRadius.circular(16),
@@ -178,7 +189,7 @@ class _MoodButton extends StatelessWidget {
               Text(mood.emoji, style: const TextStyle(fontSize: 20)),
               const SizedBox(height: 8),
               Text(
-                mood.label,
+                mood.labelLocalized(l),
                 style: AppStyles.jakartaMediumCharcoal12.copyWith(
                   fontSize: 12.5,
                   color: AppColors.surface,
@@ -205,6 +216,7 @@ class _StartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final bool disabled = completed || !canStart;
     final Color bg = disabled
         ? AppColors.surface.withValues(alpha: 0.12)
@@ -235,7 +247,9 @@ class _StartButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                completed ? 'Check-in Completed' : 'Start Evening Check-in',
+                completed
+                    ? l.eveningCheckinCompletedButton
+                    : l.eveningCheckinStartButton,
                 style: AppStyles.jakartaBoldSurface14.copyWith(
                   fontSize: 15,
                   color: disabled && !completed ? AppColors.surface.withValues(alpha: 0.5) : AppColors.surface,

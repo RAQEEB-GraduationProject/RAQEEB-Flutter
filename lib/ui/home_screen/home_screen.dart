@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raqeeb/data/models/app_notification.dart';
+import 'package:raqeeb/l10n/app_localizations.dart';
 import 'package:raqeeb/ui/checkin_screen/checkin_symptoms_screen.dart';
 import 'package:raqeeb/ui/notifications_screen/notifications_screen.dart';
 import 'package:raqeeb/ui/home_screen/widgets/care_journey_card.dart';
@@ -31,38 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   static const int _totalDoses = 2;
   static const int _hydrationDone = 1;
   static const int _totalTasks = 1 + _totalDoses + 1;
-
-  static const List<ScheduleItem> _schedule = [
-    ScheduleItem(
-      time: '11:30 AM',
-      title: 'Hydration Target (500ml)',
-      status: 'Scheduled',
-      color: Color(0xFF3B82F6),
-    ),
-    ScheduleItem(
-      time: '04:00 PM',
-      title: 'Rest & Fatigue Pause (30m)',
-      status: 'Upcoming',
-      color: Color(0xFFA855F7),
-    ),
-  ];
-
-  static const List<CareTeamMember> _careTeam = [
-    CareTeamMember(
-      name: 'Dr. Khalid A.',
-      role: 'Doctor',
-      initials: 'KA',
-      avatarColor: AppColors.tealBg,
-      accentColor: AppColors.tealAccent,
-    ),
-    CareTeamMember(
-      name: 'Sarah N.',
-      role: 'Nurse',
-      initials: 'SN',
-      avatarColor: AppColors.softLavender,
-      accentColor: AppColors.violetAccent,
-    ),
-  ];
 
   Mood? _mood; // no default: nothing selected until the patient taps
   bool _checkinDone = false;
@@ -127,6 +96,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
+    final schedule = [
+      ScheduleItem(
+        time: '11:30 AM',
+        title: l.scheduleHydrationTitle,
+        status: l.scheduleStatusScheduled,
+        color: const Color(0xFF3B82F6),
+      ),
+      ScheduleItem(
+        time: '04:00 PM',
+        title: l.scheduleRestTitle,
+        status: l.scheduleStatusUpcoming,
+        color: const Color(0xFFA855F7),
+      ),
+    ];
+
+    final careTeam = [
+      CareTeamMember(
+        name: l.careTeamDoctorName,
+        role: l.careTeamDoctorRole,
+        initials: 'KA',
+        avatarColor: AppColors.tealBg,
+        accentColor: AppColors.tealAccent,
+      ),
+      CareTeamMember(
+        name: l.careTeamNurseName,
+        role: l.careTeamNurseRole,
+        initials: 'SN',
+        avatarColor: AppColors.softLavender,
+        accentColor: AppColors.violetAccent,
+      ),
+    ];
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -135,19 +138,16 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               HomeHeader(
-                name: 'Fatima',
-                subtitle:
-                    'Cycle 3 • Day 5 of Chemotherapy (AC Protocol)',
+                name: l.homePatientName,
+                subtitle: l.homeSubtitle,
                 hasUnreadNotifications: _hasUnreadNotifications,
                 onBellTap: _openNotifications,
               ),
               const SizedBox(height: 16),
-              const DailyWordCard(
+              DailyWordCard(
                 day: 5,
-                quote:
-                    "Take things one step at a time. You're doing your best, and every small step matters. Be kind to yourself today.",
-                tip:
-                    'Sip water steadily in small amounts through this morning.',
+                quote: l.dailyWordQuote,
+                tip: l.dailyWordTip,
               ),
               const SizedBox(height: 16),
               EveningCheckinCard(
@@ -167,13 +167,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 16),
               MedicationCard(
-                name: 'Tamoxifen',
-                dose: '20 mg',
-                period: 'Evening',
-                dueText: 'Due at 8:00 PM • In 2 hours',
+                name: l.medTamoxifenName,
+                dose: l.medTamoxifenDose,
+                period: l.medEveningPeriod,
+                dueText: l.medTamoxifenDue,
                 status: _tamoxifen,
-                schedule: _schedule,
-                nextDose: 'Next dose: AC Protocol Day 6',
+                schedule: schedule,
+                nextDose: l.medNextDose,
                 onTaken: _markTaken,
                 onSkip: _markSkipped,
                 onViewSchedule: () {
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 20),
               CareTeamSection(
-                members: _careTeam,
+                members: careTeam,
                 onDirectoryTap: () {
                   // TODO: navigate to clinic directory (no screen yet)
                 },
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 20),
               SosButton(
-                text: 'SOS – ALERT MY CARE TEAM',
+                text: l.sosAlertButton,
                 icon: Icons.error_rounded,
                 type: SosButtonType.danger,
                 onPressed: _openSos,

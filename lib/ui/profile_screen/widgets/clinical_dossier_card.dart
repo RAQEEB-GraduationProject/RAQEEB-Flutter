@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../sos_screens/widgets/sos_card.dart';
 
 class DossierField {
@@ -27,6 +28,8 @@ class ClinicalDossierCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return SosCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +52,7 @@ class ClinicalDossierCard extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Clinical Dossier',
+                  l.profileClinicalDossierTitle,
                   style: AppStyles.jakartaSemiBoldCharcoal20.copyWith(
                     fontSize: 18,
                     letterSpacing: -0.3,
@@ -72,7 +75,7 @@ class ClinicalDossierCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'Read-Only',
+                      l.profileReadOnly,
                       style: AppStyles.jakartaBoldCharcoal14.copyWith(
                         fontSize: 11,
                         letterSpacing: 0,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../sos_screens/widgets/sos_card.dart';
 
 enum DoseStatus { pending, taken, skipped }
@@ -45,14 +46,16 @@ class MedicationCard extends StatelessWidget {
     required this.onViewSchedule,
   });
 
-  String get _subtitle => switch (status) {
+  String _subtitle(AppLocalizations l) => switch (status) {
         DoseStatus.pending => dueText,
-        DoseStatus.taken => 'Marked as taken • Well done!',
-        DoseStatus.skipped => 'Skipped for now',
+        DoseStatus.taken => l.medSubtitleTaken,
+        DoseStatus.skipped => l.medSubtitleSkipped,
       };
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return SosCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +114,7 @@ class MedicationCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      _subtitle,
+                      _subtitle(l),
                       style: AppStyles.jakartaMediumMuted12.copyWith(
                         letterSpacing: 0,
                       ),
@@ -153,7 +156,7 @@ class MedicationCard extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: _DoseButton(
-                  label: status == DoseStatus.taken ? 'Taken ✓' : 'Taken',
+                  label: status == DoseStatus.taken ? l.medButtonTakenDone : l.medButtonTaken,
                   icon: status == DoseStatus.taken
                       ? Icons.check_circle_rounded
                       : Icons.check_rounded,
@@ -172,7 +175,7 @@ class MedicationCard extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: _DoseButton(
-                  label: status == DoseStatus.skipped ? 'Skipped' : 'Skip',
+                  label: status == DoseStatus.skipped ? l.medButtonSkippedDone : l.medButtonSkip,
                   icon: status == DoseStatus.skipped
                       ? Icons.close_rounded
                       : Icons.access_time_rounded,
@@ -218,7 +221,7 @@ class MedicationCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
                   child: Text(
-                    'View Schedule & Meds →',
+                    l.medViewSchedule,
                     style: AppStyles.jakartaBoldCharcoal14.copyWith(
                       fontSize: 12,
                       letterSpacing: 0,

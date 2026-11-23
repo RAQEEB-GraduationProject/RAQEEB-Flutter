@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class DailyWordCard extends StatelessWidget {
   final String quote;
@@ -16,6 +17,8 @@ class DailyWordCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
@@ -43,7 +46,7 @@ class DailyWordCard extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                'DAILY WORD OF CARE',
+                l.dailyWordTitle,
                 style: AppStyles.jakartaBoldCharcoal14.copyWith(
                   fontSize: 11,
                   letterSpacing: 0.8,
@@ -58,7 +61,7 @@ class DailyWordCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  'Day $day',
+                  l.dailyWordDay(day),
                   style: AppStyles.jakartaBoldCharcoal14.copyWith(
                     fontSize: 11,
                     letterSpacing: 0,
@@ -100,7 +103,7 @@ class DailyWordCard extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: 'Gentle tip: ',
+                        text: l.dailyWordGentleTip,
                         style: AppStyles.jakartaBoldCharcoal14.copyWith(
                           fontSize: 12,
                           letterSpacing: 0,

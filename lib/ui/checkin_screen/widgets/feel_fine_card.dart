@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import 'select_indicator.dart';
 
 class FeelFineCard extends StatelessWidget {
@@ -11,6 +12,8 @@ class FeelFineCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Material(
       color: AppColors.surface,
       borderRadius: BorderRadius.circular(20),
@@ -47,7 +50,7 @@ class FeelFineCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'I feel fine',
+                      l.feelFineTitle,
                       style: AppStyles.jakartaBoldCharcoal14.copyWith(
                         fontSize: 15,
                         letterSpacing: 0,
@@ -55,7 +58,7 @@ class FeelFineCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'No active discomfort or side effects to report',
+                      l.feelFineSubtitle,
                       style: AppStyles.jakartaRegularCharcoal16.copyWith(
                         fontSize: 12,
                         color: AppColors.charcoal.withValues(alpha: 0.75),

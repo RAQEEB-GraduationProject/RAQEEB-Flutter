@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class AlertGuaranteeCard extends StatelessWidget {
   const AlertGuaranteeCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -37,7 +40,7 @@ class AlertGuaranteeCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Patient Alert Guarantee',
+                  l.alertGuaranteeTitle,
                   style: AppStyles.jakartaBoldCharcoal14.copyWith(
                     fontSize: 12.5,
                     letterSpacing: 0,
@@ -45,7 +48,7 @@ class AlertGuaranteeCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Urgent clinical alerts deliver immediate high-priority push notifications and automated emergency SMS even if Do-Not-Disturb is active.',
+                  l.alertGuaranteeBody,
                   style: AppStyles.jakartaRegularCharcoal16.copyWith(
                     fontSize: 11.5,
                     color: AppColors.charcoal.withValues(alpha: 0.85),

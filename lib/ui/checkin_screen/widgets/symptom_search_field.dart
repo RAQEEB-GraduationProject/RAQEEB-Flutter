@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class SymptomSearchField extends StatelessWidget {
   final ValueChanged<String> onChanged;
@@ -9,11 +10,13 @@ class SymptomSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return TextField(
       onChanged: onChanged,
       style: AppStyles.jakartaRegularCharcoal16.copyWith(fontSize: 14),
       decoration: InputDecoration(
-        hintText: 'Search symptom...',
+        hintText: l.symptomSearchHint,
         hintStyle: AppStyles.jakartaRegularMuted16.copyWith(fontSize: 14),
         prefixIcon: const Icon(
           Icons.search_rounded,

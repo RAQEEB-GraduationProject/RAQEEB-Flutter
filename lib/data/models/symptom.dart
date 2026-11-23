@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 
 enum SymptomCategory { digestive, general, painNeuro }
 
@@ -7,6 +8,12 @@ extension SymptomCategoryX on SymptomCategory {
         SymptomCategory.digestive => 'Digestive',
         SymptomCategory.general => 'General',
         SymptomCategory.painNeuro => 'Pain & Neuro',
+      };
+
+  String labelLocalized(AppLocalizations l) => switch (this) {
+        SymptomCategory.digestive => l.symptomCategoryDigestive,
+        SymptomCategory.general => l.symptomCategoryGeneral,
+        SymptomCategory.painNeuro => l.symptomCategoryPainNeuro,
       };
 }
 
@@ -24,6 +31,30 @@ class Symptom {
     required this.icon,
     required this.category,
   });
+
+  String nameLocalized(AppLocalizations l) => switch (id) {
+        'nausea' => l.symptomNauseaName,
+        'fatigue' => l.symptomFatigueName,
+        'vomiting' => l.symptomVomitingName,
+        'shortness_of_breath' => l.symptomShortnessBreathName,
+        'numbness' => l.symptomNumbnessName,
+        'fever' => l.symptomFeverName,
+        'diarrhea' => l.symptomDiarrheaName,
+        'headache' => l.symptomHeadacheName,
+        _ => name,
+      };
+
+  String descriptionLocalized(AppLocalizations l) => switch (id) {
+        'nausea' => l.symptomNauseaDesc,
+        'fatigue' => l.symptomFatigueDesc,
+        'vomiting' => l.symptomVomitingDesc,
+        'shortness_of_breath' => l.symptomShortnessBreathDesc,
+        'numbness' => l.symptomNumbnessDesc,
+        'fever' => l.symptomFeverDesc,
+        'diarrhea' => l.symptomDiarrheaDesc,
+        'headache' => l.symptomHeadacheDesc,
+        _ => description,
+      };
 }
 
 // Placeholder list until the backend / repository exists.

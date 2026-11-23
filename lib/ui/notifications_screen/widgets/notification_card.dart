@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../data/models/app_notification.dart';
+import '../../../l10n/app_localizations.dart';
 
 enum NotificationMenuAction { markRead, remove }
 
@@ -57,6 +58,7 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final look = _look;
     final unread = !notification.isRead;
 
@@ -116,7 +118,7 @@ class NotificationCard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Text(
-                                  notification.tag,
+                                  notification.tagLocalized(l),
                                   overflow: TextOverflow.ellipsis,
                                   style: AppStyles.jakartaBoldCharcoal14
                                       .copyWith(
@@ -142,7 +144,7 @@ class NotificationCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          notification.meta,
+                          notification.metaLocalized(l),
                           style: AppStyles.jakartaMediumMuted12.copyWith(
                             fontSize: 11.5,
                             letterSpacing: 0,
@@ -162,13 +164,13 @@ class NotificationCard extends StatelessWidget {
                     onSelected: onMenuSelected,
                     itemBuilder: (_) => [
                       if (unread)
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: NotificationMenuAction.markRead,
-                          child: Text('Mark as read'),
+                          child: Text(l.notificationMarkRead),
                         ),
-                      const PopupMenuItem(
+                      PopupMenuItem(
                         value: NotificationMenuAction.remove,
-                        child: Text('Remove'),
+                        child: Text(l.notificationRemove),
                       ),
                     ],
                   ),
@@ -176,7 +178,7 @@ class NotificationCard extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                notification.title,
+                notification.titleLocalized(l),
                 style: AppStyles.jakartaBoldCharcoal14.copyWith(
                   fontSize: 17,
                   letterSpacing: -0.3,
@@ -184,7 +186,7 @@ class NotificationCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                notification.body,
+                notification.bodyLocalized(l),
                 style: AppStyles.jakartaRegularCharcoal16.copyWith(
                   fontSize: 13,
                   height: 1.5,
@@ -195,14 +197,14 @@ class NotificationCard extends StatelessWidget {
               Row(
                 children: [
                   _ActionButton(
-                    label: notification.actionLabel,
+                    label: notification.actionLabelLocalized(l),
                     icon: look.actionIcon,
                     primary: look.primaryAction,
                     onTap: onAction,
                   ),
                   const Spacer(),
                   Text(
-                    'Opens ${notification.opensScreen}',
+                    l.notificationOpensScreen(notification.opensScreen),
                     style: AppStyles.jakartaMediumMuted12.copyWith(
                       fontSize: 10.5,
                       letterSpacing: 0,

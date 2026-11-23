@@ -1,3 +1,5 @@
+import '../../l10n/app_localizations.dart';
+
 enum NotificationCategory { medications, checkIns, riskReports }
 
 extension NotificationCategoryX on NotificationCategory {
@@ -5,6 +7,12 @@ extension NotificationCategoryX on NotificationCategory {
         NotificationCategory.medications => 'Medications',
         NotificationCategory.checkIns => 'Check-ins',
         NotificationCategory.riskReports => 'Risk Reports',
+      };
+
+  String labelLocalized(AppLocalizations l) => switch (this) {
+        NotificationCategory.medications => l.notifCategoryMedications,
+        NotificationCategory.checkIns => l.notifCategoryCheckIns,
+        NotificationCategory.riskReports => l.notifCategoryRiskReports,
       };
 }
 
@@ -40,6 +48,46 @@ class AppNotification {
     required this.opensScreen,
     this.isRead = false,
   });
+
+  String tagLocalized(AppLocalizations l) => switch (id) {
+        'n1' => l.notifTagActionRequired,
+        'n2' => l.notifTagClinicalAssessment,
+        'n3' => l.notifTagUrgentEvent,
+        'n4' => l.notifTagArchivedRoutine,
+        _ => tag,
+      };
+
+  String metaLocalized(AppLocalizations l) => switch (id) {
+        'n1' => l.notifMeta1,
+        'n2' => l.notifMeta2,
+        'n3' => l.notifMeta3,
+        'n4' => l.notifMeta4,
+        _ => meta,
+      };
+
+  String titleLocalized(AppLocalizations l) => switch (id) {
+        'n1' => l.notifTitle1,
+        'n2' => l.notifTitle2,
+        'n3' => l.notifTitle3,
+        'n4' => l.notifTitle4,
+        _ => title,
+      };
+
+  String bodyLocalized(AppLocalizations l) => switch (id) {
+        'n1' => l.notifBody1,
+        'n2' => l.notifBody2,
+        'n3' => l.notifBody3,
+        'n4' => l.notifBody4,
+        _ => body,
+      };
+
+  String actionLabelLocalized(AppLocalizations l) => switch (id) {
+        'n1' => l.notifAction1,
+        'n2' => l.notifAction2,
+        'n3' => l.notifAction3,
+        'n4' => l.notifAction4,
+        _ => actionLabel,
+      };
 
   AppNotification copyWith({bool? isRead}) => AppNotification(
         id: id,

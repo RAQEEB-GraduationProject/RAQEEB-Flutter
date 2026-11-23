@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../data/models/app_notification.dart';
+import '../../../l10n/app_localizations.dart';
 
 class NotificationFilterChips extends StatelessWidget {
   final List<AppNotification> items;
@@ -21,13 +22,15 @@ class NotificationFilterChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           _Chip(
-            label: 'All',
+            label: l.notificationsFilterAll,
             count: items.length,
             selected: selected == null,
             onTap: () => onSelected(null),
@@ -35,7 +38,7 @@ class NotificationFilterChips extends StatelessWidget {
           for (final c in NotificationCategory.values) ...[
             const SizedBox(width: 8),
             _Chip(
-              label: c.label,
+              label: c.labelLocalized(l),
               count: _count(c),
               selected: selected == c,
               onTap: () => onSelected(c),

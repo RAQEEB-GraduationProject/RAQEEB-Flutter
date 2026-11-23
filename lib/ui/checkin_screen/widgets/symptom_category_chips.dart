@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../data/models/symptom.dart';
+import '../../../l10n/app_localizations.dart';
 
 class SymptomCategoryChips extends StatelessWidget {
   final int totalCount;
@@ -18,19 +19,21 @@ class SymptomCategoryChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
           _Chip(
-            label: 'All ($totalCount)',
+            label: l.symptomCategoryAll(totalCount),
             selected: selected == null,
             onTap: () => onSelected(null),
           ),
           for (final category in SymptomCategory.values) ...[
             const SizedBox(width: 8),
             _Chip(
-              label: category.label,
+              label: category.labelLocalized(l),
               selected: selected == category,
               onTap: () => onSelected(category),
             ),

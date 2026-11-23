@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 import '../../data/models/symptom.dart';
+import '../../l10n/app_localizations.dart';
 import '../home_screen/widgets/evening_checkin_card.dart' show Mood;
 import 'widgets/checkin_bottom_bar.dart';
 import 'widgets/checkin_progress_header.dart';
@@ -28,24 +29,26 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
   String _query = '';
   SymptomCategory? _category; // null = All
 
-  List<Symptom> get _visibleSymptoms {
+  List<Symptom> _visibleSymptoms(AppLocalizations l) {
     final q = _query.trim().toLowerCase();
     return allSymptoms.where((s) {
       final matchesCategory = _category == null || s.category == _category;
       final matchesQuery = q.isEmpty ||
           s.name.toLowerCase().contains(q) ||
-          s.description.toLowerCase().contains(q);
+          s.description.toLowerCase().contains(q) ||
+          s.nameLocalized(l).toLowerCase().contains(q) ||
+          s.descriptionLocalized(l).toLowerCase().contains(q);
       return matchesCategory && matchesQuery;
     }).toList();
   }
 
   bool get _canContinue => _feelFine || _selectedIds.isNotEmpty;
 
-  String get _summary {
-    if (_feelFine) return 'No symptoms to report';
+  String _summary(AppLocalizations l) {
+    if (_feelFine) return l.checkinSummaryNoSymptoms;
     final n = _selectedIds.length;
-    if (n == 0) return 'No symptoms selected';
-    return '$n ${n == 1 ? 'symptom' : 'symptoms'} selected';
+    if (n == 0) return l.checkinSummaryNoneSelected;
+    return l.checkinSummarySelected(n);
   }
 
   void _toggleFeelFine() {
@@ -70,7 +73,8 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final symptoms = _visibleSymptoms;
+    final l = AppLocalizations.of(context)!;
+    final symptoms = _visibleSymptoms(l);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -85,10 +89,10 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CheckinProgressHeader(
+                    CheckinProgressHeader(
                       step: 1,
                       totalSteps: 4,
-                      title: 'Symptom Check',
+                      title: l.checkinHeaderTitle,
                     ),
                     const SizedBox(height: 18),
                     Row(
@@ -99,7 +103,7 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'How are you feeling now?',
+                                l.checkinFeelingTitle,
                                 style: AppStyles.jakartaBoldCharcoal32.copyWith(
                                   fontSize: 24,
                                   letterSpacing: -0.5,
@@ -107,7 +111,7 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'Tap any symptoms noticed since your last dose.',
+                                l.checkinFeelingSubtitle,
                                 style: AppStyles.jakartaRegularCharcoal16
                                     .copyWith(fontSize: 13),
                               ),
@@ -157,7 +161,7 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 32),
                         child: Center(
                           child: Text(
-                            'No symptoms found',
+                            l.symptomNoSymptomsFound,
                             style: AppStyles.jakartaRegularMuted16,
                           ),
                         ),
@@ -178,10 +182,10 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
               child: CheckinBottomBar(
-                summary: _summary,
+                summary: _summary(l),
                 enabled: _canContinue,
-                continueLabel: 'Continue to Severity (Step 2)',
-                backLabel: 'Back to Home',
+                continueLabel: l.checkinContinueButton,
+                backLabel: l.checkinBackHomeButton,
                 onContinue: _continue,
                 onBack: () => Navigator.maybePop(context),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../home_screen/home_screen.dart';
 import '../home_screen/widgets/home_bottom_nav.dart';
 import '../profile_screen/profile_screen.dart';
@@ -30,6 +31,8 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -40,8 +43,8 @@ class _MainShellState extends State<MainShell> {
                 index: _index,
                 children: [
                   HomeScreen(onOpenProfileTab: () => _selectTab(_profileTab)),
-                  const _ComingSoonTab(title: 'States'),
-                  const _ComingSoonTab(title: 'Meds'),
+                  _ComingSoonTab(title: l.navStates),
+                  _ComingSoonTab(title: l.navMeds),
                   const ProfileScreen(),
                 ],
               ),
@@ -62,9 +65,11 @@ class _ComingSoonTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Center(
       child: Text(
-        '$title – coming soon',
+        l.comingSoon(title),
         style: AppStyles.jakartaRegularMuted16,
       ),
     );

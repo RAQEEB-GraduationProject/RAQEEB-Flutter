@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class CareTeamMember {
   final String name;
@@ -32,6 +33,8 @@ class CareTeamSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -41,7 +44,7 @@ class CareTeamSection extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Care Team On-Call',
+                  l.careTeamSectionTitle,
                   style: AppStyles.jakartaBoldCharcoal14.copyWith(
                     fontSize: 15,
                     letterSpacing: -0.2,
@@ -54,7 +57,7 @@ class CareTeamSection extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 2),
                   child: Text(
-                    'Clinic Directory',
+                    l.careTeamClinicDirectory,
                     style: AppStyles.jakartaBoldCharcoal14.copyWith(
                       fontSize: 12.5,
                       letterSpacing: 0,

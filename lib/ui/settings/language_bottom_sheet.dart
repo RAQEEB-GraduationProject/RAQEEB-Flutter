@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:raqeeb/core/theme/app_colors.dart';
 import 'package:raqeeb/core/theme/app_styles.dart';
 import 'package:raqeeb/l10n/app_localizations.dart';
+import 'package:raqeeb/main.dart';
 
 enum _AppLanguage { english, arabic }
 
@@ -15,6 +16,19 @@ class LanguageBottomSheet extends StatefulWidget {
 
 class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   _AppLanguage _selected = _AppLanguage.english;
+  bool _initialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_initialized) {
+      final currentLocale = Localizations.localeOf(context);
+      _selected = currentLocale.languageCode == 'ar'
+          ? _AppLanguage.arabic
+          : _AppLanguage.english;
+      _initialized = true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +162,13 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
             width: double.infinity,
             height: 52,
             child: ElevatedButton(
-              onPressed: () => Navigator.of(context).pop(_selected),
+              onPressed: () {
+                final newLocale = _selected == _AppLanguage.arabic
+                    ? const Locale('ar')
+                    : const Locale('en');
+                MyApp.setLocale(context, newLocale);
+                Navigator.of(context).pop(_selected);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryPink,
                 foregroundColor: Colors.white,
@@ -315,6 +335,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 
   Widget _buildPill(String label, {required Color bgColor, required Color textColor}) {
+    if (label.isEmpty) return const SizedBox.shrink();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(

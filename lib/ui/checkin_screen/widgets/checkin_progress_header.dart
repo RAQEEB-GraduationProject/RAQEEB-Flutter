@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class CheckinProgressHeader extends StatelessWidget {
   final int step;
@@ -16,6 +17,7 @@ class CheckinProgressHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final double progress = step / totalSteps;
     final int percent = (progress * 100).round();
 
@@ -42,7 +44,7 @@ class CheckinProgressHeader extends StatelessWidget {
             const SizedBox(width: 10),
             Expanded(
               child: Text(
-                'Step $step of $totalSteps • $title',
+                l.checkinStepProgress(step, totalSteps, title),
                 style: AppStyles.jakartaBoldCharcoal14.copyWith(
                   fontSize: 12,
                   letterSpacing: 0,
@@ -56,7 +58,7 @@ class CheckinProgressHeader extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                '$percent% Done',
+                l.checkinPercentDone(percent),
                 style: AppStyles.jakartaBoldCharcoal14.copyWith(
                   fontSize: 11,
                   letterSpacing: 0,

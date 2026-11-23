@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class HomeBottomNav extends StatelessWidget {
   final int currentIndex;
@@ -12,15 +13,16 @@ class HomeBottomNav extends StatelessWidget {
     required this.onTap,
   });
 
-  static const _items = [
-    (icon: Icons.home_rounded, label: 'Home'),
-    (icon: Icons.monitor_heart_outlined, label: 'States'),
-    (icon: Icons.medical_information_outlined, label: 'Meds'),
-    (icon: Icons.person_outline_rounded, label: 'Me'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final items = [
+      (icon: Icons.home_rounded, label: l.navHome),
+      (icon: Icons.monitor_heart_outlined, label: l.navStates),
+      (icon: Icons.medical_information_outlined, label: l.navMeds),
+      (icon: Icons.person_outline_rounded, label: l.navMe),
+    ];
+
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
@@ -38,10 +40,10 @@ class HomeBottomNav extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          for (var i = 0; i < _items.length; i++)
+          for (var i = 0; i < items.length; i++)
             _NavItem(
-              icon: _items[i].icon,
-              label: _items[i].label,
+              icon: items[i].icon,
+              label: items[i].label,
               selected: i == currentIndex,
               onTap: () => onTap(i),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../data/models/symptom.dart';
+import '../../../l10n/app_localizations.dart';
 import 'select_indicator.dart';
 
 class SymptomCard extends StatelessWidget {
@@ -18,6 +19,8 @@ class SymptomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Material(
       color: AppColors.surface,
       borderRadius: BorderRadius.circular(20),
@@ -60,7 +63,7 @@ class SymptomCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          symptom.name,
+                          symptom.nameLocalized(l),
                           style: AppStyles.jakartaBoldCharcoal14.copyWith(
                             fontSize: 17,
                             letterSpacing: -0.2,
@@ -68,7 +71,7 @@ class SymptomCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          symptom.description,
+                          symptom.descriptionLocalized(l),
                           style: AppStyles.jakartaRegularCharcoal16.copyWith(
                             fontSize: 12,
                             color: AppColors.charcoal.withValues(alpha: 0.75),
@@ -86,7 +89,7 @@ class SymptomCard extends StatelessWidget {
                 const Divider(height: 1, color: AppColors.trackGrey),
                 const SizedBox(height: 10),
                 Text(
-                  'Severity will follow →',
+                  l.symptomSeverityFollow,
                   style: AppStyles.jakartaBoldCharcoal14.copyWith(
                     fontSize: 11,
                     letterSpacing: 0,

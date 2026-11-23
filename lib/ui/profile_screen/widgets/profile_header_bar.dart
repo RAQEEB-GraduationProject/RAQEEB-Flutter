@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class ProfileHeaderBar extends StatelessWidget {
   final VoidCallback onSettingsTap;
@@ -9,6 +10,8 @@ class ProfileHeaderBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
@@ -46,7 +49,7 @@ class ProfileHeaderBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'RAQEEB',
+                l.appName,
                 style: AppStyles.jakartaBoldCharcoal14.copyWith(
                   fontSize: 16,
                   letterSpacing: 0.3,
@@ -54,7 +57,7 @@ class ProfileHeaderBar extends StatelessWidget {
                 ),
               ),
               Text(
-                'Care Platform',
+                l.profileCarePlatform,
                 style: AppStyles.jakartaMediumMuted12.copyWith(
                   fontSize: 10,
                   letterSpacing: 0,
@@ -64,7 +67,7 @@ class ProfileHeaderBar extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-            tooltip: 'Settings',
+            tooltip: l.settingsTitle,
             icon: const Icon(
               Icons.settings_outlined,
               color: AppColors.charcoal,

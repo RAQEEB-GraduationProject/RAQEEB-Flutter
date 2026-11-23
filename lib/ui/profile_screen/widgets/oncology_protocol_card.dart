@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../sos_screens/widgets/sos_card.dart';
 
 class OncologyProtocolCard extends StatelessWidget {
@@ -19,6 +20,8 @@ class OncologyProtocolCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return SosCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +32,7 @@ class OncologyProtocolCard extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Active Oncology Protocol',
+                  l.profileActiveProtocolTitle,
                   style: AppStyles.jakartaSemiBoldCharcoal20.copyWith(
                     fontSize: 18,
                     letterSpacing: -0.3,
@@ -56,7 +59,7 @@ class OncologyProtocolCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      'Active',
+                      l.profileActiveStatus,
                       style: AppStyles.jakartaBoldCharcoal14.copyWith(
                         fontSize: 11,
                         letterSpacing: 0,
@@ -77,10 +80,10 @@ class OncologyProtocolCard extends StatelessWidget {
             ),
             child: Column(
               children: [
-                _InfoRow(label: 'Chemotherapy Protocol', value: protocol),
+                _InfoRow(label: l.profileChemoProtocolLabel, value: protocol),
                 const SizedBox(height: 10),
                 _InfoRow(
-                  label: 'Cycle Timeline',
+                  label: l.profileCycleTimelineLabel,
                   value: cycleTimeline,
                   valueColor: AppColors.tealAccent,
                 ),
@@ -91,7 +94,7 @@ class OncologyProtocolCard extends StatelessWidget {
                     Expanded(
                       flex: 2,
                       child: Text(
-                        'Monitoring Status',
+                        l.profileMonitoringStatusLabel,
                         style: _labelStyle,
                       ),
                     ),
@@ -141,7 +144,7 @@ class OncologyProtocolCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      'Regimen Details',
+                      l.profileClinicalRegimenLabel,
                       style: AppStyles.jakartaBoldCharcoal14.copyWith(
                         fontSize: 11,
                         letterSpacing: 0,

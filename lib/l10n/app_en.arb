@@ -1,5 +1,234 @@
 {
+  "@@locale": "en",
+
+  "appName": "RAQEEB",
+  "comingSoon": "{title} – coming soon",
+  "@comingSoon": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+
+  "navHome": "Home",
+  "navStates": "States",
+  "navMeds": "Meds",
+  "navMe": "Me",
+
   "login": "login",
+  "loginWelcomeTitle": "Welcome to RAQEEB",
+  "loginWelcomeSubtitle": "Your care, always connected.",
+  "loginContinueAs": "CONTINUE AS",
+  "rolePatient": "Patient",
+  "roleCaregiver": "Caregiver",
+  "loginPatientIdLabel": "Patient ID",
+  "loginCaregiverIdLabel": "Caregiver ID",
+  "loginPatientIdHint": "Enter your Patient ID",
+  "loginCaregiverIdHint": "Enter your Caregiver ID",
+  "loginIdRequired": "ID is required",
+  "loginPasswordLabel": "Password",
+  "loginPasswordHint": "Enter your password",
+  "loginPasswordMinLength": "Password must be at least 6 characters",
+  "loginRememberMe": "Remember me",
+  "loginForgotPassword": "Forgot Password?",
+  "loginButton": "LOGIN",
+
+  "homeHelloGreeting": "Hello, {name}",
+  "@homeHelloGreeting": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "homePatientName": "Fatima",
+  "homeSubtitle": "Cycle 3 • Day 5 of Chemotherapy (AC Protocol)",
+  "dailyWordTitle": "DAILY WORD OF CARE",
+  "dailyWordDay": "Day {day}",
+  "@dailyWordDay": {
+    "placeholders": {
+      "day": { "type": "int" }
+    }
+  },
+  "dailyWordQuote": "Take things one step at a time. You're doing your best, and every small step matters. Be kind to yourself today.",
+  "dailyWordTip": "Sip water steadily in small amounts through this morning.",
+  "dailyWordGentleTip": "Gentle tip: ",
+  "eveningCheckinTitle": "How did today feel?",
+  "eveningCheckinSubtitle": "Tell us how you feel today.",
+  "moodGreat": "I'm Great",
+  "moodOkay": "I'm Okay",
+  "moodNotGreat": "Not Great",
+  "checkinStatusCompleted": "COMPLETED",
+  "checkinStatusNotCompleted": "NOT COMPLETED • DUE {dueTime}",
+  "@checkinStatusNotCompleted": {
+    "placeholders": {
+      "dueTime": { "type": "String" }
+    }
+  },
+  "eveningCheckinCompletedButton": "Check-in Completed",
+  "eveningCheckinStartButton": "Start Evening Check-in",
+  "careJourneyTitle": "Today's Care Journey",
+  "careJourneyProgress": "{completed} of {total} ({percent}%)",
+  "@careJourneyProgress": {
+    "placeholders": {
+      "completed": { "type": "int" },
+      "total": { "type": "int" },
+      "percent": { "type": "int" }
+    }
+  },
+  "journeyCheckinDone": "Check-in: Done",
+  "journeyCheckinPending": "Check-in: Pending",
+  "journeyMedsTaken": "Meds: {taken}/{total} Taken",
+  "@journeyMedsTaken": {
+    "placeholders": {
+      "taken": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "journeyHydrationOnTrack": "Hydration: On Track",
+  "medTamoxifenName": "Tamoxifen",
+  "medTamoxifenDose": "20 mg",
+  "medEveningPeriod": "Evening",
+  "medTamoxifenDue": "Due at 8:00 PM • In 2 hours",
+  "medNextDose": "Next dose: AC Protocol Day 6",
+  "medSubtitleTaken": "Marked as taken • Well done!",
+  "medSubtitleSkipped": "Skipped for now",
+  "medButtonTakenDone": "Taken ✓",
+  "medButtonTaken": "Taken",
+  "medButtonSkippedDone": "Skipped",
+  "medButtonSkip": "Skip",
+  "medViewSchedule": "View Schedule & Meds →",
+  "scheduleHydrationTitle": "Hydration Target (500ml)",
+  "scheduleStatusScheduled": "Scheduled",
+  "scheduleRestTitle": "Rest & Fatigue Pause (30m)",
+  "scheduleStatusUpcoming": "Upcoming",
+  "careTeamSectionTitle": "Care Team On-Call",
+  "careTeamClinicDirectory": "Clinic Directory",
+  "careTeamDoctorName": "Dr. Khalid A.",
+  "careTeamDoctorRole": "Doctor",
+  "careTeamNurseName": "Sarah N.",
+  "careTeamNurseRole": "Nurse",
+  "sosAlertButton": "SOS – ALERT MY CARE TEAM",
+
+  "checkinHeaderTitle": "Symptom Check",
+  "checkinStepProgress": "Step {step} of {totalSteps} • {title}",
+  "@checkinStepProgress": {
+    "placeholders": {
+      "step": { "type": "int" },
+      "totalSteps": { "type": "int" },
+      "title": { "type": "String" }
+    }
+  },
+  "checkinPercentDone": "{percent}% Done",
+  "@checkinPercentDone": {
+    "placeholders": {
+      "percent": { "type": "int" }
+    }
+  },
+  "checkinFeelingTitle": "How are you feeling now?",
+  "checkinFeelingSubtitle": "Tap any symptoms noticed since your last dose.",
+  "feelFineTitle": "I feel fine",
+  "feelFineSubtitle": "No active discomfort or side effects to report",
+  "symptomSearchHint": "Search symptom...",
+  "symptomCategoryAll": "All ({count})",
+  "@symptomCategoryAll": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "symptomCategoryDigestive": "Digestive",
+  "symptomCategoryGeneral": "General",
+  "symptomCategoryPainNeuro": "Pain & Neuro",
+  "symptomNoSymptomsFound": "No symptoms found",
+  "symptomSeverityFollow": "Severity will follow →",
+  "checkinSummaryNoSymptoms": "No symptoms to report",
+  "checkinSummaryNoneSelected": "No symptoms selected",
+  "checkinSummarySelected": "{count, plural, =1{1 symptom selected} other{{count} symptoms selected}}",
+  "@checkinSummarySelected": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "checkinContinueButton": "Continue to Severity (Step 2)",
+  "checkinBackHomeButton": "Back to Home",
+
+  "symptomNauseaName": "Nausea",
+  "symptomNauseaDesc": "Feeling sick to your stomach",
+  "symptomFatigueName": "Fatigue",
+  "symptomFatigueDesc": "Unusual tiredness",
+  "symptomVomitingName": "Vomiting",
+  "symptomVomitingDesc": "Throwing up",
+  "symptomShortnessBreathName": "Shortness of Breath",
+  "symptomShortnessBreathDesc": "Difficulty breathing",
+  "symptomNumbnessName": "Numbness & Tingling",
+  "symptomNumbnessDesc": "Pins and needles in fingers or toes",
+  "symptomFeverName": "Fever & Shivers",
+  "symptomFeverDesc": "Feeling hot or having chills",
+  "symptomDiarrheaName": "Diarrhea",
+  "symptomDiarrheaDesc": "Loose or watery stools",
+  "symptomHeadacheName": "Headache",
+  "symptomHeadacheDesc": "Pain or pressure in your head",
+
+  "notificationsTitle": "Notifications",
+  "notificationsMarkAllRead": "Mark all read",
+  "notificationsFilterAll": "All",
+  "notifCategoryMedications": "Medications",
+  "notifCategoryCheckIns": "Check-ins",
+  "notifCategoryRiskReports": "Risk Reports",
+  "notificationsEmpty": "No notifications",
+  "notificationMarkRead": "Mark as read",
+  "notificationRemove": "Remove",
+  "notificationOpensScreen": "Opens {screen}",
+  "@notificationOpensScreen": {
+    "placeholders": {
+      "screen": { "type": "String" }
+    }
+  },
+  "alertGuaranteeTitle": "Patient Alert Guarantee",
+  "alertGuaranteeBody": "Urgent clinical alerts deliver immediate high-priority push notifications and automated emergency SMS even if Do-Not-Disturb is active.",
+
+  "notifTagActionRequired": "ACTION REQUIRED",
+  "notifMeta1": "10m ago • Oncology Care Plan",
+  "notifTitle1": "Medication Due: Ondansetron 8mg",
+  "notifBody1": "Scheduled dose for 2:00 PM is due now. Please confirm once taken to maintain symptom management and counter chemotherapy-induced nausea.",
+  "notifAction1": "Confirm Dose",
+  "notifTagClinicalAssessment": "CLINICAL ASSESSMENT",
+  "notifMeta2": "2h ago • AI Triage & Clinical Team",
+  "notifTitle2": "Morning Check-in Evaluated",
+  "notifBody2": "Your morning report was evaluated (Moderate Nausea • Yellow Alert). Clinical guidance and nurse review window updated. Hydration protocol recommended.",
+  "notifAction2": "View Clinical Assessment",
+  "notifTagUrgentEvent": "URGENT EVENT",
+  "notifMeta3": "Yesterday • 10:42 PM",
+  "notifTitle3": "Emergency SOS Sent",
+  "notifBody3": "Emergency alert was recorded and sent to Dr. Khalid, on-call oncology nurse, and primary caregiver Fatima. Protocol resolved successfully.",
+  "notifAction3": "View SOS Details",
+  "notifTagArchivedRoutine": "ARCHIVED ROUTINE",
+  "notifMeta4": "Sep 28 • 8:05 AM",
+  "notifTitle4": "Daily Morning Check-in",
+  "notifBody4": "Your scheduled 8:00 AM check-in was logged. Vitals and symptoms archived in your health history.",
+  "notifAction4": "View Check-in",
+
+  "profileCarePlatform": "Care Platform",
+  "profileBadgeText": "Verified Patient ID #RQ-882109 • Active Clinical Enrollment",
+  "profileActiveProtocolTitle": "Active Oncology Protocol",
+  "profileActiveStatus": "Active",
+  "profileChemoProtocolLabel": "Chemotherapy Protocol",
+  "profileCycleTimelineLabel": "Cycle Timeline",
+  "profileMonitoringStatusLabel": "Monitoring Status",
+  "profileClinicalRegimenLabel": "Clinical Regimen",
+  "profileProtocol": "AC Chemotherapy Protocol",
+  "profileCycleTimeline": "Cycle 3 • Day 5 of 21",
+  "profileMonitoringStatus": "High Monitoring Phase (Nadir Window)",
+  "profileRegimen": "Doxorubicin + Cyclophosphamide (IV infusion every 21 days)",
+  "profileClinicalDossierTitle": "Clinical Dossier",
+  "profileReadOnly": "Read-Only",
+  "profileFullLegalName": "Full Legal Name",
+  "profileAge": "Age",
+  "profileAgeValue": "58 Years Old",
+  "profileMrn": "Medical Record No. (MRN)",
+  "profileMrnValue": "KFSH-904218-ONC",
+  "profileAssignedOncologist": "Assigned Oncologist",
+  "profileOncologistValue": "Dr. Khalid Al-Mansoor (Consultant)",
+  "profileCareCoordinator": "Care Coordinator",
+  "profileCoordinatorValue": "SN Sarah N. (Oncology Nurse)",
+  "profileDossierFooterNote": "Personal and medical information is managed exclusively by your oncology hospital care team. Contact your clinic coordinator for administrative updates.",
 
   "settingsTitle": "Settings",
   "settingsCareJourneyStatus": "Care Journey active • Bahya",
@@ -54,5 +283,44 @@
   "logoutSyncNote": "Your saved check-ins, vitals history, and symptom logs remain safely synchronized with KFSH&RC.",
   "logoutConfirm": "Yes, Log Out",
   "logoutCancel": "Cancel & Stay Logged In",
-  "logoutUrgentLink": "Urgent Medical Questions? Call MOH 937"
+  "logoutUrgentLink": "Urgent Medical Questions? Call MOH 937",
+
+  "sosConfirmationTitle": "SOS Confirmation",
+  "sosConfirmationHeader": "Emergency SOS Confirmation",
+  "sosConfirmationQuestion": "Do you need urgent clinical emergency\nassistance right now?",
+  "sosOfflineBanner": "No internet - an SMS will be sent to your caregiver",
+  "sosPressingSendWill": "Pressing SEND SOS will instantly:",
+  "sosStep1": "Log your SOS with the current time.",
+  "sosStep2Part1": "Alert your primary oncologist ",
+  "sosStep2Doctor": "Dr. Khalid",
+  "sosStep2Part2": " and on-call nurse ",
+  "sosStep2Nurse": "Sarah N.",
+  "sosStep3Part1": "Send an emergency SMS & push dispatch to registered caregiver ",
+  "sosStep3Caregiver": "Fatima Al-Otaibi.",
+  "sosSendEmergencyNow": "SEND EMERGENCY SOS NOW",
+  "sosCancelImSafe": "Cancel — I'm Safe",
+  "sosCallHospital": "Call Hospital",
+
+  "sosSentAt": "Sent at {sentAt}",
+  "@sosSentAt": {
+    "placeholders": {
+      "sentAt": { "type": "String" }
+    }
+  },
+  "sosSentTitle": "SOS Sent",
+  "sosSentSubtitle": "Your care team has been notified. Stay calm and\nseated while help is routed.",
+  "sosDispatchPriority": "Dispatch Priority: Level 1",
+  "sosDispatchActive": "ACTIVE",
+  "sosRapidResponseTitle": "Oncology Rapid Response",
+  "sosRapidResponseSubtitle": "On-call Nurse Sarah N. dispatched",
+  "sosRapidResponseStatus": "Acknowledged • In Transit (4–6 min)",
+  "sosCaregiverAlertTitle": "Caregiver Alert Sent",
+  "sosCaregiverAlertSubtitle": "Omar Al-Fassi notified with live GPS pin",
+  "sosCaregiverAlertDelivery": "Delivered via automated priority SMS",
+  "sosSharedLocationTitle": "Shared Location",
+  "sosSharedLocationSubtitle": "Home • Room 204 (Accurate to 3m)",
+  "sosCaregiverName": "Omar Al-Fassi",
+  "sosCaregiverStatus": "Phone ringing in background",
+  "sosCallHospitalLineNow": "Call Hospital Line Now",
+  "sosBackToHome": "Back to Home"
 }

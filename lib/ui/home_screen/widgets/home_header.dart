@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_styles.dart';
+import '../../../l10n/app_localizations.dart';
 
 class HomeHeader extends StatelessWidget {
   final String name;
@@ -18,6 +19,8 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -29,7 +32,7 @@ class HomeHeader extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      'Hello, $name',
+                      l.homeHelloGreeting(name),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppStyles.jakartaBoldCharcoal32.copyWith(
