@@ -29,7 +29,25 @@ abstract final class AppColors {
   static const Color fieldBorder = Color(0xFFE6BFCB); // Text field border
   static const Color background = Color(0xFFFDF8F7); // Screen background
 
+  // Home screen (estimated from the Patient Home design)
+  static const Color softPink = Color(0xFFF2709C); // Check-in CTA - selected nav item
+  static const Color darkCard = Color(0xFF1B1820); // Evening check-in card
+  static const Color checkinYellow = Color(0xFFFFEE8F); // "Not completed" chip bg
+  static const Color checkinOrange = Color(0xFFF59E0B); // "Not completed" dot
+  static const Color tealAccent = Color(0xFF3A9AA0); // Section label - links
+  static const Color tealBg = Color(0xFFE1F0F1); // Teal tinted bg
+  static const Color skyBlue = Color(0xFF2563EB); // Hydration text / icon
+  static const Color skyBlueBg = Color(0xFFE6EFFF); // Hydration chip bg
+  static const Color violetAccent = Color(0xFF7C5CC4); // Nurse avatar / call icon
+  static const Color trackGrey = Color(0xFFEAEAEA); // Progress bar track
+
   // Gradients
+  static const LinearGradient dailyWordGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFFDDEEF0), Color(0xFFE6DBF8)],
+  );
+
   static const LinearGradient primaryGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

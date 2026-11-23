@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:raqeeb/ui/home_screen/home_screen.dart';
-import 'package:raqeeb/ui/login_screen/widgets/blob.dart';
-import 'package:raqeeb/ui/login_screen/widgets/custom_button.dart';
-import 'package:raqeeb/ui/login_screen/widgets/cutom_text_field.dart';
-import 'package:raqeeb/ui/login_screen/widgets/logo.dart';
-import 'package:raqeeb/ui/login_screen/widgets/role_card.dart';
+import 'package:testingg/ui/main_shell/main_shell.dart';
+import 'package:testingg/ui/login_screen/widgets/blob.dart';
+import 'package:testingg/ui/login_screen/widgets/custom_button.dart';
+import 'package:testingg/ui/login_screen/widgets/cutom_text_field.dart';
+import 'package:testingg/ui/login_screen/widgets/logo.dart';
+import 'package:testingg/ui/login_screen/widgets/role_card.dart';
+
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _loading = false);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      MaterialPageRoute(builder: (_) => const MainShell()),
     );
   }
 
