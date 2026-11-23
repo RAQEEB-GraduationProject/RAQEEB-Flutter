@@ -1,3 +1,5 @@
+import 'package:device_preview_plus/device_preview_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:raqeeb/core/theme/app_colors.dart';
@@ -705,4 +707,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
       color: const Color(0xFFF0F0F0),
     );
   }
+}
+
+void main() {
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: SettingsScreen(), // الشاشة الخاصة بك
+      ),
+    ),
+  );
 }
