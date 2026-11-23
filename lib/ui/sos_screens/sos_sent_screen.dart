@@ -10,6 +10,8 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 
 class SosSentScreen extends StatelessWidget {
+  static const String route ="/sos_sent";
+
   final String sentAt;
 
   const SosSentScreen({super.key, this.sentAt = '10:42 PM'});

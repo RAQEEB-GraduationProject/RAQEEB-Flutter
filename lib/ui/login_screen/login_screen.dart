@@ -9,9 +9,14 @@ import 'package:raqeeb/ui/login_screen/widgets/role_card.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 
+import 'package:raqeeb/l10n/app_localizations.dart';
+
+
 enum UserRole { patient, caregiver }
 
 class LoginScreen extends StatefulWidget {
+  static const String route ="/login";
+
   const LoginScreen({super.key});
 
   @override
@@ -41,9 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
     await Future.delayed(const Duration(seconds: 1));
     if (!mounted) return;
     setState(() => _loading = false);
-    Navigator.pushReplacement(
+    Navigator.pushReplacementNamed(
       context,
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      HomeScreen.route
     );
   }
 
@@ -190,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 26),
                       PrimaryButton(
-                        text: 'LOGIN',
+                        text: AppLocalizations.of(context)!.login,
                         trailingIcon: Icons.arrow_forward,
                         isLoading: _loading,
                         onPressed: _login,

@@ -10,6 +10,8 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
 
 class SosConfirmationScreen extends StatelessWidget {
+  static const String route ="/sos_confirmation";
+
   /// When true, shows the "No internet - an SMS will be sent" banner.
   /// TODO: drive this from a connectivity check (e.g. connectivity_plus).
   final bool isOffline;
