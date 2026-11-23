@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raqeeb/ui/settings/settings_screen.dart';
 import 'widgets/clinical_dossier_card.dart';
 import 'widgets/oncology_protocol_card.dart';
 import 'widgets/profile_header_bar.dart';
@@ -34,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
       children: [
         ProfileHeaderBar(
           onSettingsTap: () {
-            // TODO: navigate to the Settings screen (no screen yet).
+            Navigator.pushNamed(context, SettingsScreen.route);
           },
         ),
         Expanded(

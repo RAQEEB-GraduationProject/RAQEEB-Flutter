@@ -9,6 +9,8 @@ import '../profile_screen/profile_screen.dart';
 // switching tabs never pushes a new route. IndexedStack keeps each tab's
 // state (scroll position, selections) alive while it's hidden.
 class MainShell extends StatefulWidget {
+  static const String route = '/main_shell';
+
   const MainShell({super.key});
 
   @override

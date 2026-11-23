@@ -64,7 +64,8 @@ class _CheckinSymptomsScreenState extends State<CheckinSymptomsScreen> {
 
   void _continue() {
     // TODO: navigate to the Severity step once that screen exists.
-    // Pass `_selectedIds` and `widget.mood` along.
+    // For now, we just finish the flow and return true to mark it completed.
+    Navigator.pop(context, true);
   }
 
   @override

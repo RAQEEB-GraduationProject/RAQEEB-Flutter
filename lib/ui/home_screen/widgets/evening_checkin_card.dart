@@ -36,6 +36,9 @@ class EveningCheckinCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // If the user hasn't selected a mood, the Start button is disabled.
+    final bool canStart = completed || selectedMood != null;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -90,7 +93,7 @@ class EveningCheckinCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          _StartButton(completed: completed, onTap: onStart),
+          _StartButton(completed: completed, canStart: canStart, onTap: onStart),
         ],
       ),
     );
@@ -191,13 +194,19 @@ class _MoodButton extends StatelessWidget {
 
 class _StartButton extends StatelessWidget {
   final bool completed;
+  final bool canStart;
   final VoidCallback onTap;
 
-  const _StartButton({required this.completed, required this.onTap});
+  const _StartButton({
+    required this.completed,
+    required this.canStart,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final Color bg = completed
+    final bool disabled = completed || !canStart;
+    final Color bg = disabled
         ? AppColors.surface.withValues(alpha: 0.12)
         : AppColors.softPink;
 
@@ -207,7 +216,7 @@ class _StartButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(26),
-        boxShadow: completed
+        boxShadow: disabled
             ? null
             : [
                 BoxShadow(
@@ -221,19 +230,22 @@ class _StartButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(26),
-          onTap: completed ? null : onTap,
+          onTap: disabled ? null : onTap,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 completed ? 'Check-in Completed' : 'Start Evening Check-in',
-                style: AppStyles.jakartaBoldSurface14.copyWith(fontSize: 15),
+                style: AppStyles.jakartaBoldSurface14.copyWith(
+                  fontSize: 15,
+                  color: disabled && !completed ? AppColors.surface.withValues(alpha: 0.5) : AppColors.surface,
+                ),
               ),
               const SizedBox(width: 8),
               Icon(
                 completed ? Icons.check_rounded : Icons.arrow_forward_rounded,
                 size: 18,
-                color: AppColors.surface,
+                color: disabled && !completed ? AppColors.surface.withValues(alpha: 0.5) : AppColors.surface,
               ),
             ],
           ),

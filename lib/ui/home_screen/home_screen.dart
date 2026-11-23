@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Opens the check-in flow with the mood picked on the emoji row.
   Future<void> _startCheckin() async {
-    final done = await Navigator.pushNamed<bool>(
+    final done = await Navigator.pushNamed(
       context,
       CheckinSymptomsScreen.route,
       arguments: _mood,
@@ -110,14 +110,15 @@ class _HomeScreenState extends State<HomeScreen> {
   // The notifications screen returns the updated list (read / removed),
   // and whether the patient tapped its profile avatar.
   Future<void> _openNotifications() async {
-    final result = await Navigator.pushNamed<NotificationsResult>(
+    final result = await Navigator.pushNamed(
       context,
       NotificationsScreen.route,
       arguments: _notifications,
     );
     if (result == null || !mounted) return;
-    setState(() => _notifications = result.notifications);
-    if (result.openProfile) widget.onOpenProfileTab();
+    final notifResult = result as NotificationsResult;
+    setState(() => _notifications = notifResult.notifications);
+    if (notifResult.openProfile) widget.onOpenProfileTab();
   }
 
   void _openSos() {
@@ -126,74 +127,79 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 20),
-      child: Column(
-        children: [
-          HomeHeader(
-            name: 'Fatima',
-            subtitle:
-                'Cycle 3 • Day 5 of Chemotherapy (AC Protocol)',
-            hasUnreadNotifications: _hasUnreadNotifications,
-            onBellTap: _openNotifications,
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 20),
+          child: Column(
+            children: [
+              HomeHeader(
+                name: 'Fatima',
+                subtitle:
+                    'Cycle 3 • Day 5 of Chemotherapy (AC Protocol)',
+                hasUnreadNotifications: _hasUnreadNotifications,
+                onBellTap: _openNotifications,
+              ),
+              const SizedBox(height: 16),
+              const DailyWordCard(
+                day: 5,
+                quote:
+                    "Take things one step at a time. You're doing your best, and every small step matters. Be kind to yourself today.",
+                tip:
+                    'Sip water steadily in small amounts through this morning.',
+              ),
+              const SizedBox(height: 16),
+              EveningCheckinCard(
+                dueTime: '8:30 PM',
+                completed: _checkinDone,
+                selectedMood: _mood,
+                onMoodSelected: _selectMood,
+                onStart: _startCheckin,
+              ),
+              const SizedBox(height: 16),
+              CareJourneyCard(
+                completed: _completedTasks,
+                total: _totalTasks,
+                checkinDone: _checkinDone,
+                medsTaken: _medsTaken,
+                medsTotal: _totalDoses,
+              ),
+              const SizedBox(height: 16),
+              MedicationCard(
+                name: 'Tamoxifen',
+                dose: '20 mg',
+                period: 'Evening',
+                dueText: 'Due at 8:00 PM • In 2 hours',
+                status: _tamoxifen,
+                schedule: _schedule,
+                nextDose: 'Next dose: AC Protocol Day 6',
+                onTaken: _markTaken,
+                onSkip: _markSkipped,
+                onViewSchedule: () {
+                  // TODO: navigate to schedule & meds screen (no screen yet)
+                },
+              ),
+              const SizedBox(height: 20),
+              CareTeamSection(
+                members: _careTeam,
+                onDirectoryTap: () {
+                  // TODO: navigate to clinic directory (no screen yet)
+                },
+                onCallTap: (member) {
+                  // TODO: launch phone dialer (url_launcher)
+                },
+              ),
+              const SizedBox(height: 20),
+              SosButton(
+                text: 'SOS – ALERT MY CARE TEAM',
+                icon: Icons.error_rounded,
+                type: SosButtonType.danger,
+                onPressed: _openSos,
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          const DailyWordCard(
-            day: 5,
-            quote:
-                "Take things one step at a time. You're doing your best, and every small step matters. Be kind to yourself today.",
-            tip:
-                'Sip water steadily in small amounts through this morning.',
-          ),
-          const SizedBox(height: 16),
-          EveningCheckinCard(
-            dueTime: '8:30 PM',
-            completed: _checkinDone,
-            selectedMood: _mood,
-            onMoodSelected: _selectMood,
-            onStart: _startCheckin,
-          ),
-          const SizedBox(height: 16),
-          CareJourneyCard(
-            completed: _completedTasks,
-            total: _totalTasks,
-            checkinDone: _checkinDone,
-            medsTaken: _medsTaken,
-            medsTotal: _totalDoses,
-          ),
-          const SizedBox(height: 16),
-          MedicationCard(
-            name: 'Tamoxifen',
-            dose: '20 mg',
-            period: 'Evening',
-            dueText: 'Due at 8:00 PM • In 2 hours',
-            status: _tamoxifen,
-            schedule: _schedule,
-            nextDose: 'Next dose: AC Protocol Day 6',
-            onTaken: _markTaken,
-            onSkip: _markSkipped,
-            onViewSchedule: () {
-              // TODO: navigate to schedule & meds screen (no screen yet)
-            },
-          ),
-          const SizedBox(height: 20),
-          CareTeamSection(
-            members: _careTeam,
-            onDirectoryTap: () {
-              // TODO: navigate to clinic directory (no screen yet)
-            },
-            onCallTap: (member) {
-              // TODO: launch phone dialer (url_launcher)
-            },
-          ),
-          const SizedBox(height: 20),
-          SosButton(
-            text: 'SOS – ALERT MY CARE TEAM',
-            icon: Icons.error_rounded,
-            type: SosButtonType.danger,
-            onPressed: _openSos,
-          ),
-        ],
+        ),
       ),
     );
   }

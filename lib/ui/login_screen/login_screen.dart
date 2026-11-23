@@ -5,6 +5,7 @@ import 'package:raqeeb/ui/login_screen/widgets/custom_button.dart';
 import 'package:raqeeb/ui/login_screen/widgets/cutom_text_field.dart';
 import 'package:raqeeb/ui/login_screen/widgets/logo.dart';
 import 'package:raqeeb/ui/login_screen/widgets/role_card.dart';
+import 'package:raqeeb/ui/main_shell/main_shell.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_styles.dart';
@@ -46,10 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     await Future.delayed(const Duration(seconds: 1));
     if (!mounted) return;
     setState(() => _loading = false);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => HomeScreen(onOpenProfileTab: () {})),
-    );
+    Navigator.pushReplacementNamed(context, MainShell.route);
   }
 
   @override

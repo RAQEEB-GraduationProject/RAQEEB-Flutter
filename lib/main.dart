@@ -4,6 +4,7 @@ import 'package:raqeeb/core/theme/app_theme.dart';
 import 'package:raqeeb/ui/home_screen/home_screen.dart';
 import 'package:raqeeb/ui/login_screen/login_screen.dart';
 import 'package:raqeeb/ui/settings/settings_screen.dart';
+import 'package:raqeeb/ui/main_shell/main_shell.dart';
 import 'package:raqeeb/ui/sos_screens/sos_confirmation_screen.dart';
 import 'package:raqeeb/ui/sos_screens/sos_sent_screen.dart';
 import 'l10n/app_localizations.dart';
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
         routes: {
           SplashScreen.route: (_) => const SplashScreen(),
           LoginScreen.route: (_) => const LoginScreen(),
+          MainShell.route: (_) => const MainShell(),
           SosConfirmationScreen.route: (_) => const SosConfirmationScreen(),
           SosSentScreen.route: (_) => const SosSentScreen(),
-          HomeScreen.route: (_) => HomeScreen(onOpenProfileTab: () {}),
+          // HomeScreen.route: (_) => HomeScreen(onOpenProfileTab: () {}), // Wrapped by MainShell
           SettingsScreen.route: (_) => const SettingsScreen(),
           CheckinSymptomsScreen.route: (context) {
             final mood = ModalRoute.of(context)?.settings.arguments as Mood?;
