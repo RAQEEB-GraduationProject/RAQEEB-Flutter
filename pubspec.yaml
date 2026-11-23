@@ -39,6 +39,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  device_preview_plus: ^2.9.5
 
 dev_dependencies:
   flutter_test:

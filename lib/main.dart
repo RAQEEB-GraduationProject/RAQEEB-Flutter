@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raqeeb/core/theme/app_theme.dart';
 import 'package:raqeeb/ui/home_screen/home_screen.dart';
 import 'package:raqeeb/ui/login_screen/login_screen.dart';
+import 'package:raqeeb/ui/settings/settings_screen.dart';
 import 'package:raqeeb/ui/sos_screens/sos_confirmation_screen.dart';
 import 'package:raqeeb/ui/sos_screens/sos_sent_screen.dart';
 import 'l10n/app_localizations.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           SosConfirmationScreen.route: (_) => SosConfirmationScreen(),
           SosSentScreen.route: (_) => SosSentScreen(),
           HomeScreen.route: (_) => HomeScreen(),
+          SettingsScreen.route: (_) => const SettingsScreen(),
         },
         initialRoute: LoginScreen.route,
     theme: AppTheme.lightTheme,
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: [
         Locale('en'), // English
-        Locale('es'), // Spanish
+        Locale('ar'), // Arabic
       ],);
 
   }
